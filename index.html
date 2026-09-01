@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e1013" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Kimberly Lopez | Software Developer</title>
+    <meta
+      name="description"
+      content="Software developer specializing in web applications, backend development, and custom business systems."
+    />
+    <meta name="author" content="Kimberly Lopez" />
+
+    <!--
+      TODO: once the site has a domain, add <link rel="canonical"> and
+      <meta property="og:url"> with the absolute URL, and make og:image
+      absolute too — most social scrapers will not resolve a relative path.
+      Canonical is omitted rather than guessed, because a wrong canonical is
+      worse for SEO than none.
+    -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Kimberly Lopez" />
+    <meta property="og:title" content="Kimberly Lopez | Software Developer" />
+    <meta
+      property="og:description"
+      content="Software developer specializing in web applications, backend development, and custom business systems."
+    />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Kimberly Lopez — Software Developer building systems that solve real business problems."
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kimberly Lopez | Software Developer" />
+    <meta
+      name="twitter:description"
+      content="Software developer specializing in web applications, backend development, and custom business systems."
+    />
+    <meta name="twitter:image" content="/og-image.png" />
+
+    <script>
+      // Apply the stored theme before first paint so the page never flashes the
+      // wrong one. Falls back to the OS preference.
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          if (stored === 'light' || stored === 'dark') {
+            document.documentElement.dataset.theme = stored;
+          } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.dataset.theme = 'dark';
+          }
+        } catch (e) {
+          /* Private mode — fall through to the light default. */
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

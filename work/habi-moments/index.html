@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e1013" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Habi Moments — Case Study | Kimberly Lopez</title>
+    <meta name="description" content="A booking, payment-tracking and photo-booth platform for an events business, built end to end on self-hosted PostgreSQL." />
+    <meta name="author" content="Kimberly Lopez" />
+    <!-- TODO: add an absolute <link rel="canonical"> once the domain is known. -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Kimberly Lopez" />
+    <meta property="og:title" content="Habi Moments — Case Study | Kimberly Lopez" />
+    <meta property="og:description" content="A booking, payment-tracking and photo-booth platform for an events business, built end to end on self-hosted PostgreSQL." />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Kimberly Lopez — Software Developer" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Habi Moments — Case Study | Kimberly Lopez" />
+    <meta name="twitter:description" content="A booking, payment-tracking and photo-booth platform for an events business, built end to end on self-hosted PostgreSQL." />
+    <meta name="twitter:image" content="/og-image.png" />
+
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          if (stored === 'light' || stored === 'dark') {
+            document.documentElement.dataset.theme = stored;
+          } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.dataset.theme = 'dark';
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root" data-project="habi-moments"></div>
+    <script type="module" src="/src/case-study.jsx"></script>
+  </body>
+</html>
