@@ -654,50 +654,48 @@ button {
    personal-project cards below them.
    --------------------------------------------------------------------------- */
 
+/* Same grid and scale as .side-grid below, so the two rows of cards match. */
 .work-list {
   display: grid;
-  gap: clamp(1.25rem, 2.5vw, 2rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: clamp(0.9rem, 2vw, 1.25rem);
 }
 
 .work {
-  display: grid;
-  gap: 1.4rem;
-  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: clamp(1.15rem, 2.4vw, 1.5rem);
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
 }
 
 .work__head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem 2rem;
-  padding-bottom: 1.15rem;
-  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 0.5rem;
 }
 
 .work__name {
   font-family: var(--font-serif);
-  font-size: clamp(1.6rem, 3.2vw, 2.15rem);
+  font-size: 1.28rem;
   font-weight: 500;
-  letter-spacing: -0.022em;
-  line-height: 1.15;
+  letter-spacing: -0.018em;
+  line-height: 1.2;
 }
 
 .work__subtitle {
   display: block;
-  margin-top: 0.3rem;
+  margin-top: 0.2rem;
   font-family: var(--font-sans);
-  font-size: 0.98rem;
+  font-size: 0.86rem;
   font-weight: 400;
-  letter-spacing: -0.008em;
+  letter-spacing: -0.004em;
   color: var(--ink-muted);
 }
 
 .work__category {
-  margin-top: 0.55rem;
+  margin-top: 0.3rem;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.11em;
@@ -708,34 +706,36 @@ button {
 .work__meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem 2rem;
+  gap: 0.2rem 0.5rem;
   margin: 0;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--line);
 }
 
 .work__meta div {
-  display: grid;
-  gap: 0.2rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
 }
 
 .work__meta dt {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
+  font-size: 0.63rem;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
   color: var(--ink-faint);
 }
 
 .work__meta dd {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--ink);
 }
 
 .work__what {
-  font-size: clamp(1rem, 1.7vw, 1.08rem);
-  line-height: 1.62;
+  font-size: 0.93rem;
+  line-height: 1.55;
   color: var(--ink);
-  max-width: 68ch;
 }
 
 /* The workflow the system covers, as a readable chain rather than a diagram. */
@@ -781,14 +781,14 @@ button {
 
 .work__role {
   display: grid;
-  gap: 0.35rem;
-  padding-left: clamp(0.9rem, 2vw, 1.2rem);
+  gap: 0.25rem;
+  padding-left: 0.85rem;
   border-left: 2px solid var(--accent);
 }
 
 .work__role-label {
   font-family: var(--font-mono);
-  font-size: 0.67rem;
+  font-size: 0.63rem;
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--accent);
@@ -801,20 +801,21 @@ button {
 }
 
 .work__role p:last-child {
-  font-size: 0.96rem;
-  line-height: 1.6;
+  font-size: 0.88rem;
+  line-height: 1.55;
   color: var(--ink-muted);
-  max-width: 64ch;
 }
 
 .work__foot {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.9rem 1.5rem;
-  padding-top: 1.15rem;
+  margin-top: auto;
+  display: grid;
+  gap: 0.8rem;
+  padding-top: 0.9rem;
   border-top: 1px solid var(--line);
+}
+
+.work__foot .link-arrow {
+  font-size: 0.85rem;
 }
 
 /* ---------------------------------------------------------------------------
