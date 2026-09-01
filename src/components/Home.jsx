@@ -4,12 +4,10 @@ import {
   contact,
   education,
   experience,
-  forBusinesses,
   howIWork,
   personalProjects,
   professionalProjects,
   profile,
-  showClientSections,
   skills,
 } from '../data/content.js';
 import Footer from './Footer.jsx';
@@ -17,7 +15,6 @@ import Header from './Header.jsx';
 import {
   ArrowRight,
   ArrowUpRight,
-  Copy,
   Download,
   Mail,
   ResumeLink,
@@ -31,13 +28,9 @@ function Hero() {
   return (
     <section className="hero" id="top">
       <div className="shell">
-        <div className="hero__topline" data-reveal>
-          <p className="hero__name">{profile.name}</p>
-          <p className="availability">
-            <span className="availability__dot" aria-hidden="true" />
-            {profile.availability}
-          </p>
-        </div>
+        <p className="hero__name" data-reveal>
+          {profile.name}
+        </p>
 
         <h1 className="hero__headline" data-reveal>
           <span className="hero__greeting">{profile.greeting}</span>{' '}
@@ -228,17 +221,17 @@ function Experience() {
         {experience.map((role) => (
           <article className="role" key={role.company} data-reveal>
             <div className="role__meta">
-              <Copy value={role.dates} as="p" className="role__dates" />
-              <Copy value={role.location} as="p" className="role__location" />
+              <p className="role__dates">{role.dates}</p>
+              <p className="role__location">{role.location}</p>
             </div>
 
             <div>
               <h3 className="role__company">
                 {role.current && <span className="dot" aria-hidden="true" />}
-                <Copy value={role.company} />
+                {role.company}
               </h3>
               <p className="role__title">
-                <Copy value={role.role} />
+                {role.role}
                 {role.roleNote && (
                   <span className="role__note">{role.roleNote}</span>
                 )}
@@ -246,9 +239,7 @@ function Experience() {
 
               <ul className="bullets">
                 {role.bullets.map((b) => (
-                  <li key={b}>
-                    <Copy value={b} />
-                  </li>
+                  <li key={b}>{b}</li>
                 ))}
               </ul>
 
@@ -355,54 +346,11 @@ function Skills() {
 
 /* -------------------------------------------------------------------------- */
 
-function ForBusinesses() {
-  return (
-    <Section
-      id="for-businesses"
-      index="05 — For Businesses"
-      title={forBusinesses.heading}
-      lead={forBusinesses.lead}
-      className="business"
-    >
-      <div className="capabilities">
-        {forBusinesses.capabilities.map((cap) => (
-          <article className="capability" key={cap.title} data-reveal>
-            <h3>{cap.title}</h3>
-            <p>{cap.text}</p>
-          </article>
-        ))}
-      </div>
-
-      <div className="business__footer" data-reveal>
-        <p className="business__note">{forBusinesses.teamNote}</p>
-        <div className="business__actions">
-          <a
-            className="btn btn--primary"
-            href={`mailto:${profile.email}?subject=Project%20enquiry`}
-          >
-            Work With Me
-            <ArrowRight />
-          </a>
-          <a
-            className="btn btn--secondary"
-            href={profile.team}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Meet {profile.teamName}
-            <ArrowUpRight />
-          </a>
-        </div>
-      </div>
-    </Section>
-  );
-}
-
 function HowIWork() {
   return (
     <Section
       id="how-i-work"
-      index="06 — Process"
+      index="05 — Process"
       title={howIWork.heading}
       lead={howIWork.lead}
     >
@@ -439,10 +387,7 @@ function Contact() {
   ];
 
   return (
-    <Section
-      id="contact"
-      index={showClientSections ? '07 — Contact' : '05 — Contact'}
-    >
+    <Section id="contact" index="06 — Contact">
       <div className="contact" data-reveal>
         <div>
           <h2 className="contact__heading">{contact.heading}</h2>
@@ -497,12 +442,7 @@ export default function Home() {
         <Experience />
         <About />
         <Skills />
-        {showClientSections && (
-          <>
-            <ForBusinesses />
-            <HowIWork />
-          </>
-        )}
+        <HowIWork />
         <Contact />
       </main>
       <Footer />

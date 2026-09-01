@@ -8,6 +8,10 @@ import { fileURLToPath } from 'node:url';
 
 import { projects } from '../src/data/content.js';
 
+// Absolute URLs: social scrapers will not resolve a relative og:image,
+// and a canonical has to be absolute to be worth anything.
+const SITE = 'https://kimberlylopez-dev.pages.dev';
+
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, '..');
 
@@ -46,12 +50,13 @@ const page = (project) => {
     <title>${escape(title)}</title>
     <meta name="description" content="${escape(description)}" />
     <meta name="author" content="Kimberly Lopez" />
-    <!-- TODO: add an absolute <link rel="canonical"> once the domain is known. -->
+    <link rel="canonical" href="${SITE}/work/${project.slug}/" />
+    <meta property="og:url" content="${SITE}/work/${project.slug}/" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Kimberly Lopez" />
     <meta property="og:title" content="${escape(title)}" />
     <meta property="og:description" content="${escape(description)}" />
-    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image" content="${SITE}/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Kimberly Lopez — Software Developer" />
@@ -59,7 +64,7 @@ const page = (project) => {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${escape(title)}" />
     <meta name="twitter:description" content="${escape(description)}" />
-    <meta name="twitter:image" content="/og-image.png" />
+    <meta name="twitter:image" content="${SITE}/og-image.png" />
 
     <script>
 ${themeScript}

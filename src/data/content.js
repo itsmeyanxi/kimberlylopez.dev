@@ -7,16 +7,8 @@
 // professional systems were taken from the commit history on those
 // repositories under Kimberly's account. Nothing claims sole authorship of a
 // system built with someone else, and there are no performance figures, user
-// counts or business results anywhere, because none were measured. Anything
-// still unconfirmed is written as a string starting "TODO:" and renders as a
-// visible placeholder chip.
+// counts or business results anywhere, because none were measured.
 // ---------------------------------------------------------------------------
-
-/** True for copy that still needs Kimberly to confirm or supply it. */
-export const isTodo = (value) =>
-  typeof value === 'string' && value.startsWith('TODO:');
-
-export const todoText = (value) => value.replace(/^TODO:\s*/, '');
 
 export const profile = {
   name: 'Kimberly Lopez',
@@ -34,8 +26,6 @@ export const profile = {
     'Full-stack responsibilities',
     'Quezon City, Philippines',
   ],
-  availability: 'Available from 16 September 2026',
-  availabilityShort: 'Available from 16 Sept 2026',
   // From the résumé, and it matches the LinkedIn handle "lopezkcc714".
   email: 'lopezkcc714@gmail.com',
   linkedin: 'https://www.linkedin.com/in/lopezkcc714',
@@ -47,19 +37,15 @@ export const profile = {
   location: 'Quezon City, Philippines',
 };
 
-// The client-facing sections were written for an earlier version of this site.
-// Set this to false to hide "For Businesses" and "How I Work", and their nav
-// link, when sending the portfolio to an employer.
-export const showClientSections = true;
 
 export const about = {
   heading: 'About Me',
   lead:
-    'I’m a Backend Software Developer at Meatplus Trading Corp., though most of my work has become full-stack since I also handle frontend features and interfaces.',
+    'I’m a Backend Software Developer at Meatplus Trading Corp. My title says backend, but I work on the frontend too, so most of what I do ends up being full-stack.',
   body: [
-    'A lot of what I do is turning existing business processes into web-based systems — warehouse, production, purchasing and finance operations that were already running on paper, in spreadsheets, or in somebody’s memory. The interesting part is usually not the code. It’s sitting with the people doing the work and finding out what the process actually does, including the exceptions nobody wrote down.',
-    'I work with one other developer on the company’s internal systems, so I end up across most of the stack: database design and business logic, the validation and access rules around it, and the screens people use for a full shift. Day to day that means PHP and Laravel, MySQL and MariaDB, Blade, Tailwind CSS and Alpine.js.',
-    'I graduated with a BS in Information Technology from the Technological Institute of the Philippines. Outside work I build my own projects, mostly to learn a stack properly rather than read about it — that’s where I picked up TypeScript, Next.js, self-hosted PostgreSQL and Cloudflare Workers.',
+    'Most of my work is internal systems — the ones people at the company use to run production, the warehouse, purchasing and finance. A lot of it started out as spreadsheets or paper forms, so a good part of the job is asking how something is actually done before writing any code.',
+    'I work with one other developer, which means I get to touch most parts of a system: the database, the business logic, the validation, and the screens on top. Day to day that’s PHP and Laravel with MySQL and MariaDB, plus Blade, Tailwind CSS and Alpine.js.',
+    'I graduated with a BS in Information Technology from the Technological Institute of the Philippines. Outside work I build small projects to learn things properly rather than just read about them — that’s how I picked up TypeScript, Next.js and Cloudflare Workers.',
   ],
 };
 
@@ -363,44 +349,6 @@ export const skills = [
   },
 ];
 
-// ---------------------------------------------------------------------------
-// Client-facing sections, hidden when showClientSections is false.
-// ---------------------------------------------------------------------------
-
-export const forBusinesses = {
-  heading: 'Software built around how your business works.',
-  lead:
-    'If your team relies on spreadsheets, manual encoding, disconnected tools, or software that no longer fits your workflow, I can help turn those processes into a purpose-built application.',
-  capabilities: [
-    {
-      title: 'Internal Business Systems',
-      text: 'Purchasing, sales, finance and operations workflows in one place, with the approvals and audit trail the business already expects on paper.',
-    },
-    {
-      title: 'Inventory & Warehouse Systems',
-      text: 'Stock tracked as it physically moves — scanning, labels, storage and dispatch — instead of reconciled after the fact.',
-    },
-    {
-      title: 'Workflow & Approval Systems',
-      text: 'Requests that route to the right people, record who approved what, and stop being chased over chat.',
-    },
-    {
-      title: 'Dashboards & Reporting',
-      text: 'Reports built on the operational data itself, so the numbers on screen and the numbers in the system are the same numbers.',
-    },
-    {
-      title: 'Existing System Improvements',
-      text: 'Work on software you already have — new modules, fixing what drifted, or making it usable again as the business changed around it.',
-    },
-    {
-      title: 'Custom Web Applications',
-      text: 'Booking systems, portals and customer-facing applications built for a specific process rather than configured from a template.',
-    },
-  ],
-  teamNote:
-    'For larger projects, I also work with my software development team at LokalGrp.dev.',
-};
-
 export const howIWork = {
   heading: 'How I Work',
   lead:
@@ -420,7 +368,7 @@ export const howIWork = {
 export const contact = {
   heading: 'Let’s talk.',
   lead:
-    'I’m open to software development roles and available from 16 September 2026. Email is the quickest way to reach me.',
+    'I’m open to software development roles. Email is the quickest way to reach me.',
 };
 
 export const navLinks = [
@@ -428,10 +376,5 @@ export const navLinks = [
   { href: '#experience', label: 'Experience' },
   { href: '#about', label: 'About' },
   { href: '#skills', label: 'Skills' },
-  { href: '#for-businesses', label: 'For Businesses', client: true },
   { href: '#contact', label: 'Contact' },
 ];
-
-export const visibleNavLinks = navLinks.filter(
-  (link) => showClientSections || !link.client
-);

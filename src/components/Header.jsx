@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { profile, visibleNavLinks } from '../data/content.js';
+import { navLinks, profile } from '../data/content.js';
 import { Close, Menu, ResumeLink, ThemeToggle, useActiveSection } from './ui.jsx';
 
 /**
@@ -10,7 +10,7 @@ import { Close, Menu, ResumeLink, ThemeToggle, useActiveSection } from './ui.jsx
 export default function Header({ home = false }) {
   const [open, setOpen] = useState(false);
   const [stuck, setStuck] = useState(false);
-  const active = useActiveSection(home ? visibleNavLinks.map((l) => l.href.slice(1)) : []);
+  const active = useActiveSection(home ? navLinks.map((l) => l.href.slice(1)) : []);
 
   useEffect(() => {
     const onScroll = () => setStuck(window.scrollY > 8);
@@ -46,7 +46,7 @@ export default function Header({ home = false }) {
         </a>
 
         <nav className="nav" aria-label="Sections">
-          {visibleNavLinks.map((link) => (
+          {navLinks.map((link) => (
             <a
               key={link.href}
               href={href(link.href)}
@@ -85,7 +85,7 @@ export default function Header({ home = false }) {
       <div className="mobile-nav" id="mobile-nav" data-open={open}>
         <div className="shell">
           <ul>
-            {visibleNavLinks.map((link) => (
+            {navLinks.map((link) => (
               <li key={link.href}>
                 <a href={href(link.href)} onClick={() => setOpen(false)}>
                   {link.label}

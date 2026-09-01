@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { isTodo, profile, todoText } from '../data/content.js';
+import { profile } from '../data/content.js';
 
 /* --------------------------------------------------------------------------
    Icons — inline SVG so the page makes no extra requests and the icons
@@ -74,18 +74,6 @@ export const Close = ({ size = 18 }) => (
     <path d="M6 6l12 12M18 6 6 18" />
   </svg>
 );
-
-/* --------------------------------------------------------------------------
-   Placeholder — renders any copy that still needs Kimberly's input as a
-   visible amber chip rather than letting an unverified claim look finished.
-   -------------------------------------------------------------------------- */
-
-export function Copy({ value, as: Tag = 'span', className }) {
-  if (isTodo(value)) {
-    return <Tag className={['todo', className].filter(Boolean).join(' ')}>{todoText(value)}</Tag>;
-  }
-  return <Tag className={className}>{value}</Tag>;
-}
 
 /**
  * Every résumé link on the site goes through here. While no PDF has been

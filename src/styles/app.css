@@ -577,53 +577,6 @@ button {
   padding-block: clamp(3.5rem, 9vw, 7rem) clamp(3.5rem, 8vw, 6rem);
 }
 
-.hero__topline {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem 1.25rem;
-  margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
-}
-
-.availability {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.28rem 0.7rem 0.28rem 0.6rem;
-  border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
-  background: var(--accent-soft);
-  color: var(--accent);
-  border-radius: 999px;
-  font-family: var(--font-mono);
-  font-size: 0.715rem;
-  letter-spacing: 0.02em;
-  line-height: 1.5;
-}
-
-.availability__dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  flex: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .availability__dot {
-    animation: availability-pulse 2.6s ease-in-out infinite;
-  }
-}
-
-@keyframes availability-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent);
-  }
-  60% {
-    box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 0%, transparent);
-  }
-}
-
 .hero__name {
   font-family: var(--font-mono);
   font-size: clamp(0.72rem, 1.6vw, 0.8rem);
@@ -695,7 +648,6 @@ button {
 /* ---------------------------------------------------------------------------
    Work
    --------------------------------------------------------------------------- */
-
 
 /* ---------------------------------------------------------------------------
    Professional work — full-width blocks, deliberately heavier than the
@@ -950,7 +902,6 @@ button {
 .side-card__links .link-arrow {
   font-size: 0.85rem;
 }
-
 
 .demo-note {
   font-family: var(--font-mono);
@@ -1267,8 +1218,6 @@ button {
   flex-wrap: wrap;
   gap: 0.4rem;
 }
-
-
 
 /* ---------------------------------------------------------------------------
    For businesses

@@ -28,10 +28,7 @@ export default function Footer() {
           <span>
             © {new Date().getFullYear()} {profile.name}
           </span>
-          <span>
-            {profile.location} · Open to remote opportunities ·{' '}
-            {profile.availabilityShort}
-          </span>
+          <span>{profile.location}</span>
         </div>
       </div>
     </footer>
