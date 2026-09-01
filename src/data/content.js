@@ -28,12 +28,9 @@ export const profile = {
 
 export const about = {
   heading: 'About Me',
-  lead:
-    'I’m currently a Backend Software Developer at Meatplus Trading Corp., but most of my work is full-stack because I also handle frontend features and interfaces.',
   body: [
-    'Most of the systems I work on are internal business systems for warehouse, production, purchasing, and finance. I usually work with PHP, Laravel, MySQL or MariaDB, JavaScript, Blade, Tailwind CSS, and Alpine.js.',
-    'I work with another developer, so I get involved in different parts of the system depending on what needs to be done: backend logic, database work, validation, reports, permissions, or frontend screens.',
-    'I graduated with a BS in Information Technology from the Technological Institute of the Philippines. I also build personal projects when I want to learn something new or make something I would actually use.',
+    'I’m a software developer based in Quezon City. I currently work on internal business systems at Meatplus Trading Corp., where I handle both backend and frontend work.',
+    'I graduated with a BS in Information Technology from the Technological Institute of the Philippines. Outside work, I like building projects based on things I would actually use, which is how Habi Moments and Shuhai started.',
   ],
 };
 
@@ -212,15 +209,10 @@ export const education = {
 
 export const certifications = {
   heading: 'Certifications',
-  dates: '2022 — 2023',
+  dates: '2022',
   items: [
     { name: 'Programming for Intermediate Users Using Python', date: 'July 2022' },
     { name: 'Programming for Beginners Using Python', date: 'July 2022' },
-    {
-      name: 'Code Your Future: Coding Workshop for Non-Coders',
-      issuer: 'DICT Region IV',
-      date: 'January 2023',
-    },
   ],
 };
 

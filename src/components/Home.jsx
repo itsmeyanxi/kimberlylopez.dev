@@ -87,17 +87,6 @@ function ProfessionalProject({ project }) {
 
       <p className="work__what">{project.what}</p>
 
-      {project.workflow && (
-        <div className="flow" aria-label="Workflow the system covers">
-          {project.workflow.map((step, i) => (
-            <span className="flow__step" key={step}>
-              <span className="flow__num">{String(i + 1).padStart(2, '0')}</span>
-              {step}
-            </span>
-          ))}
-        </div>
-      )}
-
       <div className="work__role">
         <p className="work__role-label">My role</p>
         <p>{project.cardRole}</p>
@@ -116,7 +105,7 @@ function ProfessionalProject({ project }) {
         </ul>
         {project.caseStudy && (
           <a className="link-arrow" href={`/work/${project.slug}/`}>
-            Read the case study
+            View project
             <ArrowRight />
           </a>
         )}
@@ -292,7 +281,6 @@ function About() {
   return (
     <Section id="about" index="03 — About" title={about.heading}>
       <div className="about" data-reveal>
-        <p className="about__lead">{about.lead}</p>
         <div className="about__body">
           {about.body.map((p) => (
             <p key={p.slice(0, 40)}>{p}</p>
@@ -311,7 +299,6 @@ function Skills() {
       id="skills"
       index="04 — Skills"
       title="Technical Skills"
-      lead="Grouped by how often I use them."
     >
       <div className="skills" data-reveal>
         {skills.map((group) => (

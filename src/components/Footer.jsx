@@ -19,9 +19,6 @@ export default function Footer() {
           </a>
           <a href={`mailto:${profile.email}`}>Email</a>
           <ResumeLink>Resume</ResumeLink>
-          <a href={profile.team} target="_blank" rel="noopener noreferrer">
-            {profile.teamName}
-          </a>
         </nav>
 
         <div className="footer__legal">

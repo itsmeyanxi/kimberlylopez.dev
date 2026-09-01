@@ -34,7 +34,7 @@ const themeScript = `      (function () {
       })();`;
 
 const page = (project) => {
-  const title = `${project.name} — Case Study | Kimberly Lopez`;
+  const title = `${project.name} | Kimberly Lopez`;
   const description = project.oneLiner;
 
   return `<!doctype html>
