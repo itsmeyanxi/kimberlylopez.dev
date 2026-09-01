@@ -3,9 +3,13 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "node scripts/generate-pages.mjs && vite",
     "build": "node scripts/generate-pages.mjs && vite build",
+    "start": "node scripts/server.mjs",
     "preview": "vite preview",
     "pages": "node scripts/generate-pages.mjs",
     "og": "node scripts/generate-og-image.mjs",
