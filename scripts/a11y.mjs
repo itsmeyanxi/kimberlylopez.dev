@@ -18,22 +18,30 @@ const lum = (hex) => {
 };
 const ratio = (a,bb) => { const [x,y]=[lum(a),lum(bb)].sort((p,q)=>q-p); return (x+0.05)/(y+0.05); };
 const pairs = [
-  ['light body',      '#16181c','#fbfaf7', 4.5],
-  ['light muted',     '#5b6068','#fbfaf7', 4.5],
-  ['light faint',     '#666b73','#fbfaf7', 4.5],
-  ['light accent',    '#1d5245','#fbfaf7', 4.5],
-  ['light on-accent', '#ffffff','#1d5245', 4.5],
-  ['light todo',      '#6b4e0e','#fdf6e3', 4.5],
-  ['light muted/surface','#5b6068','#ffffff', 4.5],
-  ['light faint/sunken','#666b73','#f4f2ee', 4.5],
-  ['dark body',       '#e7e8ea','#0e1013', 4.5],
-  ['dark muted',      '#a0a6ae','#0e1013', 4.5],
-  ['dark faint',      '#7f868f','#0e1013', 4.5],
-  ['dark accent',     '#6fbfa5','#0e1013', 4.5],
-  ['dark on-accent',  '#0b1a15','#6fbfa5', 4.5],
-  ['dark todo',       '#e8cf90','#2a2413', 4.5],
-  ['dark muted/surface','#a0a6ae','#15181d', 4.5],
+  ['light body',        '#20241d','#f5f1e8', 4.5],
+  ['light muted',       '#5f6258','#f5f1e8', 4.5],
+  ['light faint',       '#656761','#f5f1e8', 4.5],
+  ['light faint/sunken','#656761','#eee9dc', 4.5],
+  ['light faint/sage',  '#656761','#e4e8da', 4.5],
+  ['light muted/surface','#5f6258','#faf8f2', 4.5],
+  ['light accent',      '#566b47','#f5f1e8', 4.5],
+  ['light accent/surface','#566b47','#faf8f2', 4.5],
+  ['light accent/sage', '#566b47','#e4e8da', 4.5],
+  ['light on-accent',   '#faf8f2','#566b47', 4.5],
+  ['light on-hover',    '#faf8f2','#465b3b', 4.5],
+  ['dark body',         '#ece9df','#111510', 4.5],
+  ['dark muted',        '#b9bbaf','#111510', 4.5],
+  ['dark faint',        '#94988b','#111510', 4.5],
+  ['dark faint/sage',   '#94988b','#263124', 4.5],
+  ['dark muted/surface','#b9bbaf','#171c16', 4.5],
+  ['dark muted/raised', '#b9bbaf','#1c221b', 4.5],
+  ['dark accent',       '#8ea47a','#111510', 4.5],
+  ['dark accent/surface','#8ea47a','#171c16', 4.5],
+  ['dark accent/sage',  '#8ea47a','#263124', 4.5],
+  ['dark on-accent',    '#111510','#8ea47a', 4.5],
+  ['dark on-hover',     '#111510','#a0b48d', 4.5],
 ];
+
 console.log('=== CONTRAST ===');
 for (const [name,fg,bg,min] of pairs) {
   const r = ratio(fg,bg);

@@ -35,24 +35,24 @@ for (const [name, file] of Object.entries(sources)) {
 // CSS family names Fontsource exposes ("Inter Variable" etc.). Getting this
 // wrong silently falls back to the first loaded font.
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#fbfaf7"/>
-  <rect x="0" y="0" width="1200" height="6" fill="#1d5245"/>
+  <rect width="1200" height="630" fill="#f5f1e8"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#566b47"/>
 
   <text x="96" y="150" font-family="JetBrains Mono" font-size="21"
-        letter-spacing="4.2" fill="#8b9098">KIMBERLY LOPEZ</text>
+        letter-spacing="4.2" fill="#656761">KIMBERLY LOPEZ</text>
 
   <text x="96" y="272" font-family="Newsreader 16pt 16pt" font-size="76"
-        font-weight="450" fill="#0b0c0f">Software Developer building</text>
+        font-weight="450" fill="#20241d">Software Developer building</text>
   <text x="96" y="358" font-family="Newsreader 16pt 16pt" font-size="76"
-        font-weight="450" fill="#0b0c0f">systems that solve</text>
+        font-weight="450" fill="#20241d">systems that solve</text>
   <text x="96" y="444" font-family="Newsreader 16pt 16pt" font-size="76"
-        font-weight="450" fill="#1d5245">real business problems.</text>
+        font-weight="450" fill="#566b47">real business problems.</text>
 
-  <line x1="96" y1="512" x2="1104" y2="512" stroke="#e3e0da" stroke-width="1.5"/>
+  <line x1="96" y1="512" x2="1104" y2="512" stroke="#d8d2c3" stroke-width="1.5"/>
 
-  <text x="96" y="558" font-family="Inter" font-size="24" fill="#5b6068">Web applications · Backend development · Custom business systems</text>
+  <text x="96" y="558" font-family="Inter" font-size="24" fill="#5f6258">Web applications · Backend development · Custom business systems</text>
   <text x="96" y="596" font-family="JetBrains Mono" font-size="19"
-        letter-spacing="1.4" fill="#8b9098">Philippines · Open to remote opportunities</text>
+        letter-spacing="1.4" fill="#656761">Philippines · Open to remote opportunities</text>
 </svg>`;
 
 const resvg = new Resvg(svg, {

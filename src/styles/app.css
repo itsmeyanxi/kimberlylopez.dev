@@ -8,38 +8,32 @@
 :root {
   color-scheme: light;
 
-  /* Surfaces */
-  --paper: #fbfaf7;
-  --surface: #ffffff;
-  --surface-sunken: #f4f2ee;
-  --surface-raised: #ffffff;
+  /* Warm rice paper, not white. */
+  --paper: #f5f1e8;
+  --surface: #faf8f2;
+  --surface-sunken: #eee9dc;
+  --surface-raised: #faf8f2;
 
   /* Ink */
-  --ink: #16181c;
-  --ink-strong: #0b0c0f;
-  --ink-muted: #5b6068;
-  /* 5.13:1 on --paper and 4.79:1 on --surface-sunken, which the For
-     Businesses section and the footer sit on. The original #8b9098 was
-     3.08:1 — a fail for the small mono labels this colour carries. */
-  --ink-faint: #666b73;
+  --ink: #20241d;
+  --ink-strong: #20241d;
+  --ink-muted: #5f6258;
+  /* Darkened from #7b7d72, which was 3.45:1 on the sunken surface and
+     failed AA on the small mono labels this colour carries. */
+  --ink-faint: #656761;
 
-  /* Accent — deep pine. One accent, used sparingly. */
-  --accent: #1d5245;
-  --accent-strong: #143a31;
-  --accent-soft: #e8efec;
-  --accent-ink: #ffffff;
-
-  /* Placeholder chips for unverified copy */
-  --todo-bg: #fdf6e3;
-  --todo-border: #d9b45f;
-  --todo-ink: #6b4e0e;
+  /* Muted bamboo green, used as an accent only. */
+  --accent: #566b47;
+  --accent-strong: #465b3b;
+  --accent-soft: #e4e8da;
+  --accent-ink: #faf8f2;
+  --accent-line: #89977a;
 
   /* Lines */
-  --line: #e3e0da;
-  --line-strong: #cfcbc3;
+  --line: #d8d2c3;
+  --line-strong: #c3bba6;
 
-  /* Focus */
-  --focus: #1d5245;
+  --focus: #3f5637;
 
   /* Type */
   --font-sans: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI',
@@ -55,42 +49,40 @@
   --radius: 4px;
   --radius-lg: 8px;
 
-  --shadow-sm: 0 1px 2px rgba(16, 18, 22, 0.04),
-    0 1px 3px rgba(16, 18, 22, 0.03);
-  --shadow-md: 0 2px 4px rgba(16, 18, 22, 0.04),
-    0 12px 28px -12px rgba(16, 18, 22, 0.12);
+  --shadow-sm: 0 1px 2px rgba(32, 36, 29, 0.05),
+    0 1px 3px rgba(32, 36, 29, 0.04);
+  --shadow-md: 0 2px 4px rgba(32, 36, 29, 0.05),
+    0 12px 28px -12px rgba(32, 36, 29, 0.16);
 }
 
 :root[data-theme='dark'] {
   color-scheme: dark;
 
-  --paper: #0e1013;
-  --surface: #15181d;
-  --surface-sunken: #101317;
-  --surface-raised: #191d23;
+  /* Dark ink, never pure black. */
+  --paper: #111510;
+  --surface: #171c16;
+  --surface-sunken: #0d110c;
+  --surface-raised: #1c221b;
 
-  --ink: #e7e8ea;
-  --ink-strong: #f6f7f8;
-  --ink-muted: #a0a6ae;
-  /* 5.21:1 on the dark --paper. */
-  --ink-faint: #7f868f;
+  --ink: #ece9df;
+  --ink-strong: #ece9df;
+  --ink-muted: #b9bbaf;
+  /* Lightened from #8e9286, which was 4.27:1 on the dark sage surface. */
+  --ink-faint: #94988b;
 
-  --accent: #6fbfa5;
-  --accent-strong: #8fd4bc;
-  --accent-soft: #17251f;
-  --accent-ink: #0b1a15;
+  --accent: #8ea47a;
+  --accent-strong: #a0b48d;
+  --accent-soft: #263124;
+  --accent-ink: #111510;
+  --accent-line: #708660;
 
-  --todo-bg: #2a2413;
-  --todo-border: #8a6f2a;
-  --todo-ink: #e8cf90;
+  --line: #30382d;
+  --line-strong: #414a3d;
 
-  --line: #262b32;
-  --line-strong: #363c45;
+  --focus: #8ea47a;
 
-  --focus: #6fbfa5;
-
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.3), 0 16px 32px -16px rgba(0, 0, 0, 0.7);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.35), 0 16px 32px -16px rgba(0, 0, 0, 0.75);
 }
 
 /* ---------------------------------------------------------------------------
@@ -350,48 +342,6 @@ button {
 .text-link:hover {
   color: var(--accent);
   border-bottom-color: var(--accent);
-}
-
-/* ---------------------------------------------------------------------------
-   Placeholder chip — unverified copy
-   --------------------------------------------------------------------------- */
-
-.todo {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.45rem;
-  padding: 0.15rem 0.55rem;
-  border: 1px dashed var(--todo-border);
-  background: var(--todo-bg);
-  color: var(--todo-ink);
-  border-radius: var(--radius);
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  line-height: 1.5;
-  font-weight: 500;
-}
-
-.todo::before {
-  content: 'needs input';
-  font-size: 0.62rem;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  opacity: 0.75;
-}
-
-/* Compact form for tight rows: keeps the amber signal without the label. */
-.todo--inline {
-  gap: 0.35rem;
-  padding: 0.4rem 0.75rem;
-  font-size: 0.8rem;
-  cursor: help;
-}
-
-.todo--inline::before {
-  content: '!';
-  font-size: 0.7rem;
-  letter-spacing: 0;
-  opacity: 0.85;
 }
 
 /* ---------------------------------------------------------------------------
@@ -1772,7 +1722,7 @@ button {
 
 .skill-group--primary .chip {
   background: var(--surface);
-  border-color: color-mix(in srgb, var(--accent) 25%, var(--line));
+  border-color: color-mix(in srgb, var(--accent-line) 45%, var(--line));
   color: var(--ink);
 }
 

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Kimberly Lopez">
-  <rect width="64" height="64" rx="12" fill="#1d5245"/>
-  <path d="M18 17v30M18 33.5 33.5 17M18 33.5 34 47" stroke="#fbfaf7" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <path d="M41 17v30h9" stroke="#6fbfa5" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <rect width="64" height="64" rx="12" fill="#3f5637"/>
+  <path d="M18 17v30M18 33.5 33.5 17M18 33.5 34 47" stroke="#f5f1e8" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M41 17v30h9" stroke="#89977a" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 </svg>

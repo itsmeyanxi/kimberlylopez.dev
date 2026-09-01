@@ -62,7 +62,7 @@ export const projects = [
     worked: [
       {
         title: 'Production weighing',
-        text: 'I worked on the weighing side, including live scale readings, automatic SKU assignment, QR labels, and CSV export.',
+        text: 'I worked on the production weighing workflow, including live scale readings, automatic SKU assignment, QR labels, and CSV export.',
       },
       {
         title: 'Further processing',
@@ -78,7 +78,7 @@ export const projects = [
       },
     ],
     workedNote:
-      'I also fixed issues involving timezone handling, printed weights, and report performance, and worked on the database documentation.',
+      'I also fixed issues with timezone handling, printed weights, and report performance, and helped with the database documentation.',
     tech: [
       'PHP',
       'Laravel',
