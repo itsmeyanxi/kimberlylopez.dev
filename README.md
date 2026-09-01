@@ -85,6 +85,25 @@ tabs through the page with real key presses to confirm every control has a
 visible focus ring, checks the skip link, and exercises the mobile menu's
 open/Escape behaviour.
 
+## Deploying
+
+Cloudflare Pages, from the built output:
+
+```bash
+npm run build
+npx wrangler pages deploy dist --project-name kimberlylopez-dev --branch main
+```
+
+`public/_headers` sets the cache policy, and `public/404.html` is served for
+unknown paths. `npm start` runs `scripts/server.mjs`, a dependency-free static
+server with the same caching and gzip behaviour — useful for checking a build
+locally, or for hosts that run a container rather than serving files.
+
+If you later point a host at the GitHub repo to build on push, set
+`PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` in its build environment. The check
+suites drive the system Edge install through Playwright's `channel` option
+and never use the bundled browsers, so downloading them only slows the build.
+
 ## Before going live
 
 Search for `TODO` in `index.html` and `scripts/generate-pages.mjs`: the
