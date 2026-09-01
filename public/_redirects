@@ -1,0 +1,6 @@
+# The Nomsuite case study was renamed to SOPOD to match the résumé, and the
+# personal projects no longer have their own pages. Redirect rather than 404,
+# so any link already shared keeps working.
+/work/nomsuite/*       /work/sopod/   301
+/work/habi-moments/*   /#work         301
+/work/shuhai/*         /#work         301

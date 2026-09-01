@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { navLinks, profile } from '../data/content.js';
+import { profile, visibleNavLinks } from '../data/content.js';
 import { Close, Menu, ResumeLink, ThemeToggle, useActiveSection } from './ui.jsx';
 
 /**
@@ -10,7 +10,7 @@ import { Close, Menu, ResumeLink, ThemeToggle, useActiveSection } from './ui.jsx
 export default function Header({ home = false }) {
   const [open, setOpen] = useState(false);
   const [stuck, setStuck] = useState(false);
-  const active = useActiveSection(home ? navLinks.map((l) => l.href.slice(1)) : []);
+  const active = useActiveSection(home ? visibleNavLinks.map((l) => l.href.slice(1)) : []);
 
   useEffect(() => {
     const onScroll = () => setStuck(window.scrollY > 8);
@@ -46,7 +46,7 @@ export default function Header({ home = false }) {
         </a>
 
         <nav className="nav" aria-label="Sections">
-          {navLinks.map((link) => (
+          {visibleNavLinks.map((link) => (
             <a
               key={link.href}
               href={href(link.href)}
@@ -64,7 +64,7 @@ export default function Header({ home = false }) {
         <div className="header__actions">
           <ThemeToggle />
           <span className="header__resume">
-            <ResumeLink className="btn btn--secondary btn--sm" compact>Résumé</ResumeLink>
+            <ResumeLink className="btn btn--secondary btn--sm">Resume</ResumeLink>
           </span>
           <a className="btn btn--primary btn--sm" href={href('#contact')}>
             Let’s Talk
@@ -85,7 +85,7 @@ export default function Header({ home = false }) {
       <div className="mobile-nav" id="mobile-nav" data-open={open}>
         <div className="shell">
           <ul>
-            {navLinks.map((link) => (
+            {visibleNavLinks.map((link) => (
               <li key={link.href}>
                 <a href={href(link.href)} onClick={() => setOpen(false)}>
                   {link.label}
@@ -94,7 +94,7 @@ export default function Header({ home = false }) {
             ))}
           </ul>
           <div className="mobile-nav__actions">
-            <ResumeLink className="btn btn--secondary">Download Résumé</ResumeLink>
+            <ResumeLink className="btn btn--secondary">Download Resume</ResumeLink>
             <a
               className="btn btn--primary"
               href={href('#contact')}

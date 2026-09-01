@@ -545,7 +545,7 @@ button {
   margin-top: 1.1rem;
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1300px) {
   .nav,
   .header__divider,
   .header__resume {
@@ -556,7 +556,7 @@ button {
   }
 }
 
-@media (min-width: 1181px) {
+@media (min-width: 1301px) {
   .mobile-nav {
     display: none !important;
   }
@@ -696,169 +696,261 @@ button {
    Work
    --------------------------------------------------------------------------- */
 
-.work-grid {
+
+/* ---------------------------------------------------------------------------
+   Professional work — full-width blocks, deliberately heavier than the
+   personal-project cards below them.
+   --------------------------------------------------------------------------- */
+
+.work-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
-  gap: clamp(1rem, 2vw, 1.5rem);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
 }
 
-/* A card carries only what someone needs to decide whether to read more.
-   The full problem/solution/contribution write-up lives in the case study. */
-.card {
-  position: relative;
-  /* Column flex rather than grid so .card__foot can be pushed to the bottom,
-     keeping footers aligned across a row of uneven cards. */
-  display: flex;
-  flex-direction: column;
-  gap: 1.15rem;
-  padding: clamp(1.5rem, 3vw, 2rem);
+.work {
+  display: grid;
+  gap: 1.4rem;
+  padding: clamp(1.5rem, 3.5vw, 2.5rem);
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.card:hover {
-  border-color: var(--line-strong);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-/* Focusing the title ring the whole card, since the whole card is the link. */
-.card:has(.card__link:focus-visible) {
-  outline: 2px solid var(--focus);
-  outline-offset: 3px;
-}
-
-.card__top {
+.work__head {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1rem 2rem;
+  padding-bottom: 1.15rem;
+  border-bottom: 1px solid var(--line);
 }
 
-.card__index {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  color: var(--ink-faint);
-}
-
-.card__name {
+.work__name {
   font-family: var(--font-serif);
-  font-size: clamp(1.45rem, 2.6vw, 1.75rem);
+  font-size: clamp(1.6rem, 3.2vw, 2.15rem);
   font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+  letter-spacing: -0.022em;
+  line-height: 1.15;
 }
 
-.card__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+.work__subtitle {
+  display: block;
+  margin-top: 0.3rem;
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  font-weight: 400;
+  letter-spacing: -0.008em;
+  color: var(--ink-muted);
 }
 
-.card__link svg {
-  flex: none;
-  color: var(--accent);
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.card:hover .card__link svg,
-.card__link:focus-visible svg {
-  opacity: 1;
-  transform: none;
-}
-
-/* Stretches the title's hit area over the whole card. */
-.card__link::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-}
-
-.card__link:focus-visible {
-  outline: none;
-}
-
-.card__category {
-  margin-top: 0.35rem;
+.work__category {
+  margin-top: 0.55rem;
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
   color: var(--ink-faint);
 }
 
-.card__summary {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--ink);
-  max-width: 44ch;
+.work__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  margin: 0;
 }
 
-.card__role {
+.work__meta div {
   display: grid;
-  gap: 0.3rem;
-  padding-left: clamp(0.85rem, 2vw, 1.1rem);
+  gap: 0.2rem;
+}
+
+.work__meta dt {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.work__meta dd {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.work__what {
+  font-size: clamp(1rem, 1.7vw, 1.08rem);
+  line-height: 1.62;
+  color: var(--ink);
+  max-width: 68ch;
+}
+
+/* The workflow the system covers, as a readable chain rather than a diagram. */
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flow__step {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-sunken);
+  font-size: 0.86rem;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.flow__num {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.flow--stacked {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.4rem;
+  max-width: 30rem;
+}
+
+.flow--stacked .flow__step {
+  background: var(--surface);
+}
+
+.work__role {
+  display: grid;
+  gap: 0.35rem;
+  padding-left: clamp(0.9rem, 2vw, 1.2rem);
   border-left: 2px solid var(--accent);
 }
 
-.card__role-label {
+.work__role-label {
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: 0.67rem;
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: var(--accent);
 }
 
-.card__role p:last-child {
-  font-size: 0.92rem;
-  line-height: 1.55;
-  color: var(--ink-muted);
-}
-
-.card__tech {
-  margin-top: -0.15rem;
-}
-
-.chip--more {
+.work__credit,
+.case-credit {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   color: var(--ink-faint);
 }
 
-.card__foot {
-  margin-top: auto;
+.work__role p:last-child {
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  max-width: 64ch;
+}
+
+.work__foot {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem 1.25rem;
-  padding-top: 1.05rem;
+  gap: 0.9rem 1.5rem;
+  padding-top: 1.15rem;
   border-top: 1px solid var(--line);
 }
 
-.card__credit {
+/* ---------------------------------------------------------------------------
+   Personal projects — smaller by design.
+   --------------------------------------------------------------------------- */
+
+.subsection {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+  border-top: 1px solid var(--line);
+}
+
+.subsection__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 2.4vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: -0.016em;
+}
+
+.subsection__lead {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+}
+
+.side-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: clamp(0.9rem, 2vw, 1.25rem);
+}
+
+.side-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: clamp(1.15rem, 2.4vw, 1.5rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.side-card__name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.014em;
+}
+
+.side-card__category {
+  margin-top: 0.25rem;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
+  font-size: 0.67rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--ink-faint);
 }
 
-.card__links {
-  /* Above the stretched title link so these stay independently clickable. */
-  position: relative;
-  z-index: 1;
+.side-card__summary {
+  font-size: 0.93rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.side-card__role {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--ink-muted);
+}
+
+.side-card__foot {
+  margin-top: auto;
+  display: grid;
+  gap: 0.8rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+.side-card__links {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
-.card__links .link-arrow {
-  font-size: 0.86rem;
+.side-card__links .link-arrow {
+  font-size: 0.85rem;
 }
+
 
 .demo-note {
   font-family: var(--font-mono);
@@ -956,6 +1048,10 @@ button {
   background: var(--accent-soft);
 }
 
+.chip--more {
+  color: var(--ink-faint);
+}
+
 /* ---------------------------------------------------------------------------
    Experience
    --------------------------------------------------------------------------- */
@@ -1026,6 +1122,39 @@ button {
 
 .role__tech {
   margin-top: 1rem;
+}
+
+/* Labels the Education and Certifications rows so the timeline reads as one
+   column without needing separate section headings. */
+.role__section {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.5rem;
+}
+
+.certs {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.certs li {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.certs__name {
+  font-size: 0.96rem;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.certs__meta {
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+  color: var(--ink-faint);
 }
 
 @media (max-width: 760px) {
@@ -1131,16 +1260,15 @@ button {
   color: var(--accent);
 }
 
-.skill-group ul {
-  display: grid;
-  gap: 0.42rem;
+/* .chips is flex; this element+class selector used to out-specify it and
+   forced one chip per row. */
+.skill-group .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
 }
 
-.skill-group li {
-  font-size: 0.925rem;
-  color: var(--ink-muted);
-  line-height: 1.45;
-}
+
 
 /* ---------------------------------------------------------------------------
    For businesses
@@ -1643,4 +1771,87 @@ button {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* Hero greeting reads as speech, so it is not competing with the statement
+   that follows it. */
+.hero__greeting {
+  color: var(--ink-faint);
+}
+
+.hero__headline {
+  max-width: 22ch;
+}
+
+/* Official title plus the note that the work is wider than the title. */
+.role__note {
+  display: inline-block;
+  margin-left: 0.55rem;
+  padding: 0.1rem 0.45rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  color: var(--ink-faint);
+  text-transform: none;
+}
+
+/* About is a single readable column now rather than a two-column split. */
+.about {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 68ch;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.skill-group__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.75rem;
+}
+
+.skill-group__note {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}
+
+/* The primary stack should be obvious in a glance. */
+.skill-group--primary {
+  background: var(--accent-soft);
+}
+
+.skill-group--primary .chip {
+  background: var(--surface);
+  border-color: color-mix(in srgb, var(--accent) 25%, var(--line));
+  color: var(--ink);
+}
+
+.case-hero__subtitle {
+  margin-top: 0.7rem;
+  font-size: clamp(1.02rem, 2vw, 1.2rem);
+  color: var(--ink-muted);
+}
+
+.case-side__note {
+  margin-top: 0.7rem;
+  font-size: 0.87rem;
+  line-height: 1.55;
+  color: var(--ink-muted);
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 2.5rem;
+  grid-template-columns: none;
+}
+
+.contact__cta {
+  margin-top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }

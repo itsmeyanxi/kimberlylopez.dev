@@ -41,9 +41,10 @@ render as placeholders rather than as downloads that 404.
 
 ## Pages
 
-The landing page is `index.html`. Each case study is its own HTML entry under
-`work/<slug>/`, generated from `content.js` so page titles and meta
-descriptions can never drift from the copy they describe:
+The landing page is `index.html`. Case studies exist only for the two
+professional systems, each its own HTML entry under `work/<slug>/`, generated
+from `content.js` so page titles and meta descriptions cannot drift from the
+copy they describe:
 
 ```bash
 npm run pages      # regenerate work/*/index.html (also runs on dev and build)
@@ -51,7 +52,12 @@ npm run pages      # regenerate work/*/index.html (also runs on dev and build)
 
 Adding a project with `caseStudy: true` creates its page on the next run — but
 add it to `build.rollupOptions.input` in `vite.config.js` too, or it will not
-be built.
+be built. If a slug changes, add a redirect in `public/_redirects` rather than
+leaving the old URL to 404.
+
+`showClientSections` in `content.js` toggles the "For Businesses" and "How I
+Work" sections, and the nav link to them, for when the portfolio is going to
+an employer rather than a client.
 
 Real URLs, real per-page metadata, and no client-side router. Deploy `dist/`
 to any static host.

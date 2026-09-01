@@ -8,8 +8,8 @@ import { chromium } from 'playwright';
 import { mkdir } from 'node:fs/promises';
 
 const base = process.argv[2] ?? 'http://localhost:4173';
-const widths = [1600, 1440, 1280, 1200, 1181, 1024, 768, 430, 390];
-const pages = ['/', '/work/nomsuite/', '/work/pmai-warehouse/', '/work/habi-moments/', '/work/shuhai/'];
+const widths = [1600, 1440, 1360, 1301, 1300, 1200, 1024, 768, 430, 390];
+const pages = ['/', '/work/pmai-warehouse/', '/work/sopod/'];
 
 await mkdir('scripts/.shots', { recursive: true });
 

@@ -18,7 +18,7 @@ export default function Footer() {
             GitHub
           </a>
           <a href={`mailto:${profile.email}`}>Email</a>
-          <ResumeLink compact>Résumé</ResumeLink>
+          <ResumeLink>Resume</ResumeLink>
           <a href={profile.team} target="_blank" rel="noopener noreferrer">
             {profile.teamName}
           </a>

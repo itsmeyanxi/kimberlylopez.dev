@@ -12,10 +12,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         home: resolve(here, 'index.html'),
-        nomsuite: resolve(here, 'work/nomsuite/index.html'),
         pmai: resolve(here, 'work/pmai-warehouse/index.html'),
-        habi: resolve(here, 'work/habi-moments/index.html'),
-        shuhai: resolve(here, 'work/shuhai/index.html'),
+        sopod: resolve(here, 'work/sopod/index.html'),
       },
     },
   },
