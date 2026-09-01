@@ -82,10 +82,7 @@ export default function CaseStudy({ slug }) {
             {project.workflow && (
               <section className="case-section" data-reveal>
                 <h2>The workflow</h2>
-                <p>
-                  The system is organised around this sequence, and a record
-                  carries through it rather than being re-entered at each step.
-                </p>
+                <p>The system follows this order:</p>
                 <ol className="flow flow--stacked">
                   {project.workflow.map((step, i) => (
                     <li className="flow__step" key={step}>
@@ -125,7 +122,7 @@ export default function CaseStudy({ slug }) {
 
             {project.notes && (
               <section className="case-section" data-reveal>
-                <h2>Notes on the build</h2>
+                <h2>Notes</h2>
                 <div className="notes">
                   {project.notes.map((note) => (
                     <article className="note" key={note.title}>
@@ -152,18 +149,16 @@ export default function CaseStudy({ slug }) {
 
             <div>
               <h2>Availability</h2>
-              {/* No live link and no repository: this is an internal company
-                  system. Saying so plainly is more use to a reader than a link
-                  they cannot open. */}
+              {/* Internal system: no public link to give. */}
               <p className="case-side__note">
-                An internal company system, so there is no public deployment and
-                the source is not publicly available. Happy to talk through the
-                implementation.
+                This is an internal company system, so there is no public demo
+                and the code is not public. I am happy to walk through how it
+                works.
               </p>
             </div>
 
             <div>
-              <h2>Questions about this work?</h2>
+              <h2>Questions about this?</h2>
               <a
                 className="btn btn--primary btn--sm"
                 href={`mailto:${profile.email}?subject=${encodeURIComponent(project.name)}`}

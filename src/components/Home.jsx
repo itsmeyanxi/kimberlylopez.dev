@@ -4,7 +4,6 @@ import {
   contact,
   education,
   experience,
-  howIWork,
   personalProjects,
   professionalProjects,
   profile,
@@ -188,7 +187,7 @@ function Work() {
       id="work"
       index="01 — Work"
       title="Professional Work"
-      lead="Internal systems I help develop at Meatplus Trading Corp. Both were built with another developer, so what I worked on is listed separately from what the system does."
+      lead="Internal systems I help develop at Meatplus Trading Corp. I worked on both of these with another developer, so I have listed what I worked on separately."
     >
       <div className="work-list">
         {professionalProjects.map((project) => (
@@ -199,7 +198,7 @@ function Work() {
       <div className="subsection" data-reveal>
         <h3 className="subsection__title">Personal Projects</h3>
         <p className="subsection__lead">
-          Things I built on my own, mostly to learn a stack properly.
+          Projects I built on my own.
         </p>
       </div>
 
@@ -318,7 +317,7 @@ function Skills() {
       id="skills"
       index="04 — Skills"
       title="Technical Skills"
-      lead="Grouped by how much I actually use them, rather than listed flat."
+      lead="Grouped by how often I use them."
     >
       <div className="skills" data-reveal>
         {skills.map((group) => (
@@ -346,27 +345,6 @@ function Skills() {
 
 /* -------------------------------------------------------------------------- */
 
-function HowIWork() {
-  return (
-    <Section
-      id="how-i-work"
-      index="05 — Process"
-      title={howIWork.heading}
-      lead={howIWork.lead}
-    >
-      <div className="process" data-reveal>
-        {howIWork.steps.map((step, i) => (
-          <div className="step" key={step.name}>
-            <p className="step__num">{String(i + 1).padStart(2, '0')}</p>
-            <h3>{step.name}</h3>
-            <p>{step.text}</p>
-          </div>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
 /* -------------------------------------------------------------------------- */
 
 function Contact() {
@@ -387,7 +365,7 @@ function Contact() {
   ];
 
   return (
-    <Section id="contact" index="06 — Contact">
+    <Section id="contact" index="05 — Contact">
       <div className="contact" data-reveal>
         <div>
           <h2 className="contact__heading">{contact.heading}</h2>
@@ -442,7 +420,6 @@ export default function Home() {
         <Experience />
         <About />
         <Skills />
-        <HowIWork />
         <Contact />
       </main>
       <Footer />

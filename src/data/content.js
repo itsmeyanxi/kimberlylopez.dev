@@ -1,32 +1,21 @@
-// ---------------------------------------------------------------------------
-// Every word the site renders lives here, so copy can be corrected without
-// touching layout code.
-//
-// ACCURACY RULE: nothing here is invented. Employment, education and
-// certifications come from the résumé. The contribution bullets on the two
-// professional systems were taken from the commit history on those
-// repositories under Kimberly's account. Nothing claims sole authorship of a
-// system built with someone else, and there are no performance figures, user
-// counts or business results anywhere, because none were measured.
-// ---------------------------------------------------------------------------
+// All visible copy lives here so wording can change without touching layout.
+// Keep professional project contributions limited to verified work.
 
 export const profile = {
   name: 'Kimberly Lopez',
-  // Portfolio positioning. The official job title at Meatplus is "Backend
-  // Software Developer" and is used verbatim in the experience entry below.
-  // These two fields are deliberately different and should stay that way.
+  // Portfolio headline. The Meatplus job title is separate and stays
+  // "Backend Software Developer" in the experience entry.
   title: 'Full-Stack Software Developer',
   greeting: 'Hi, I’m Kimberly.',
   headline:
-    'I’m a software developer working mainly with PHP, Laravel, JavaScript and MySQL.',
+    'I’m a software developer working mainly with PHP, Laravel, JavaScript, and MySQL.',
   intro:
-    'I work on internal business systems used for warehouse, production, purchasing and finance operations.',
+    'I work on internal systems for warehouse, production, purchasing, and finance operations.',
   facts: [
     'Backend Software Developer at Meatplus Trading Corp.',
     'Full-stack responsibilities',
     'Quezon City, Philippines',
   ],
-  // From the résumé, and it matches the LinkedIn handle "lopezkcc714".
   email: 'lopezkcc714@gmail.com',
   linkedin: 'https://www.linkedin.com/in/lopezkcc714',
   github: 'https://github.com/itsmeyanxi',
@@ -37,46 +26,34 @@ export const profile = {
   location: 'Quezon City, Philippines',
 };
 
-
 export const about = {
   heading: 'About Me',
   lead:
-    'I’m a Backend Software Developer at Meatplus Trading Corp. My title says backend, but I work on the frontend too, so most of what I do ends up being full-stack.',
+    'I’m currently a Backend Software Developer at Meatplus Trading Corp., but most of my work is full-stack because I also handle frontend features and interfaces.',
   body: [
-    'Most of my work is internal systems — the ones people at the company use to run production, the warehouse, purchasing and finance. A lot of it started out as spreadsheets or paper forms, so a good part of the job is asking how something is actually done before writing any code.',
-    'I work with one other developer, which means I get to touch most parts of a system: the database, the business logic, the validation, and the screens on top. Day to day that’s PHP and Laravel with MySQL and MariaDB, plus Blade, Tailwind CSS and Alpine.js.',
-    'I graduated with a BS in Information Technology from the Technological Institute of the Philippines. Outside work I build small projects to learn things properly rather than just read about them — that’s how I picked up TypeScript, Next.js and Cloudflare Workers.',
+    'Most of the systems I work on are internal business systems for warehouse, production, purchasing, and finance. I usually work with PHP, Laravel, MySQL or MariaDB, JavaScript, Blade, Tailwind CSS, and Alpine.js.',
+    'I work with another developer, so I get involved in different parts of the system depending on what needs to be done: backend logic, database work, validation, reports, permissions, or frontend screens.',
+    'I graduated with a BS in Information Technology from the Technological Institute of the Philippines. I also build personal projects when I want to learn something new or make something I would actually use.',
   ],
 };
 
-// ---------------------------------------------------------------------------
-// Projects
-//
-// `kind` decides which section a project renders in and how much room it gets.
-//
-// LINKING POLICY: the two professional systems are internal Meatplus
-// applications. Neither links to a deployment or a repository — the
-// deployments are internal, and the public mirrors of both repositories sit
-// behind the commits that removed real company data from them. Those cards
-// carry their own description instead. Every link that remains on this site
-// resolves to something real; there are no placeholder hrefs.
-// ---------------------------------------------------------------------------
-
+// `kind` decides which section a project appears in.
+// The two work systems are internal, so no live link and no repository.
 export const projects = [
   {
     slug: 'pmai-warehouse',
     kind: 'professional',
     name: 'PMAI Warehouse System',
-    category: 'Production & Warehouse Traceability',
+    category: 'Production & Warehouse',
     org: 'Meatplus Trading Corp.',
     period: '2026',
     credit: 'Co-developed with one other developer',
     what:
-      'An internal system that follows production output through the warehouse. A crate is weighed on the production floor, given a QR-coded identity, and then tracked through receiving, storage, processing, stock movement and dispatch as one continuous record instead of being re-encoded at each step.',
+      'An internal production and warehouse system that tracks crates from weighing to warehouse receiving, storage, processing, stock movement, and dispatch. Each crate gets a QR code so the same record can be followed through the whole process.',
     cardSummary:
-      'Internal production and warehouse traceability — one crate, one QR code, from the weighing floor through to dispatch.',
+      'Internal production and warehouse system for tracking crates from weighing to dispatch.',
     cardRole:
-      'I worked on the production weighing workflow, the further-processing module, pallets and printable tags, and the stock and production reports.',
+      'I worked on production weighing, further processing, pallets, QR labels, receiving, and stock and production reports.',
     workflow: [
       'Production weighing',
       'QR-coded crate identification',
@@ -86,13 +63,13 @@ export const projects = [
       'Dispatch',
     ],
     contribution: [
-      'Implemented the production weighing workflow — live weight capture from the floor scale, automatic SKU banding from weight per head, rapid logging through a session, batch QR label printing and CSV export.',
-      'Worked on the further-processing module: entry with class-driven SKUs and customer routing, QR generation with the expiration date carried inside the token, a scan station for receiving, and a return flow with source tagging.',
-      'Implemented the pallet workflow — pallet creation with a crate cap, crate assignment and removal, and printable pallet tags generated server-side as PDFs so print output stays consistent across machines.',
-      'Contributed the scan-station receiving flow with background auto-accept, and the stock-on-hand and production summary reports, including an option to include not-yet-scanned records that the export also honours.',
-      'Implemented role-based access: a read-only viewer role, an IT superadmin, and per-user module overrides on top of the production, warehouse and admin roles.',
-      'Worked on correctness and performance across the system — timezone handling in records and daily resets, weight truncation rather than rounding on printed labels, and indexes on crate timestamps to keep the reports usable at volume.',
-      'Wrote the project’s schema documentation and generated its ER diagram.',
+      'Built the production weighing flow, including live scale readings, automatic SKU assignment based on weight, batch QR label printing, and CSV export.',
+      'Worked on the further-processing module, including item entry, customer routing, QR generation, receiving, and return tracking.',
+      'Built pallet creation and crate assignment, including printable pallet tags.',
+      'Worked on warehouse receiving and stock and production reports.',
+      'Added role-based access and per-user module permissions.',
+      'Fixed issues involving timezone handling, printed weights, and report performance.',
+      'Wrote the database schema documentation and generated the ER diagram.',
     ],
     features: [
       'QR generation and scanning',
@@ -122,20 +99,20 @@ export const projects = [
     caseStudy: true,
     notes: [
       {
-        title: 'The label is the record',
-        text: 'A crate gets one code at the weighing station and keeps it. Every later step is a scan against that code rather than a new form, which is what keeps the trail intact when the crate physically moves between buildings.',
+        title: 'QR tracking',
+        text: 'Each crate gets one QR code when it is weighed. The same code is scanned later during receiving, storage, processing, and dispatch so the record does not have to be recreated at every step.',
       },
       {
-        title: 'A hardware bridge rather than a browser API',
-        text: 'The floor scale posts readings over the network to an endpoint, the server caches the last reading briefly, and the weighing form polls it. That keeps the browser out of serial-port territory and makes the failure mode obvious — if the display says it is waiting for the scale, the bridge is down, not the web app.',
+        title: 'Scale integration',
+        text: 'The weighing scale sends its latest reading to the server. The weighing screen then reads that value, so the operator does not have to type the weight manually.',
       },
       {
-        title: 'Server-side PDFs for anything printed',
-        text: 'Crate labels and pallet tags are rendered to PDF on the server. Print output on a shared warehouse PC had to come out at a fixed physical size, which browser print styling could not guarantee across machines.',
+        title: 'Printable labels',
+        text: 'Crate and pallet labels are generated as PDFs so their size stays consistent when printed from different computers.',
       },
       {
-        title: 'Roles plus per-user overrides',
-        text: 'Three broad roles cover the normal case, but real warehouses have exceptions — one person who also needs the records screen. Per-user module overrides handle those without inventing a role for every person.',
+        title: 'Access control',
+        text: 'The system has normal roles, but individual users can also be given access to specific modules when needed.',
       },
     ],
   },
@@ -145,16 +122,16 @@ export const projects = [
     kind: 'professional',
     name: 'SOPOD',
     subtitle: 'Purchasing & Accounts Payable System',
-    category: 'Purchasing & Finance Operations',
+    category: 'Purchasing & Finance',
     org: 'Meatplus Trading Corp.',
     period: '2025 — 2026',
     credit: 'Co-developed with one other developer',
     what:
-      'An internal Laravel system connecting purchasing to finance, so a transaction stays one record from the original request through to the payment made against it, rather than being re-encoded as it crosses departments.',
+      'An internal purchasing and finance system that connects purchase requests, purchase orders, receiving, accounts payable, requests for payment, and check vouchers.',
     cardSummary:
-      'Internal purchasing and accounts payable — one record from purchase request through to check voucher.',
+      'Internal purchasing and finance system covering the workflow from purchase request to payment.',
     cardRole:
-      'I worked on backend business logic, database operations, administrative interfaces, validation, document generation and role-based permissions.',
+      'I worked on backend logic, database operations, finance modules, admin interfaces, reports, document generation, and permissions.',
     workflow: [
       'Purchase Request',
       'Purchase Order',
@@ -164,12 +141,13 @@ export const projects = [
       'Check Voucher',
     ],
     contribution: [
-      'Contributed backend business logic and database operations across the purchasing and accounts payable modules.',
-      'Worked on the accounts receivable side — adjustments with full create, read, update and delete, the AR dashboard and its exports, statements of account, and the aging report, including making the aging date calculation agree between the summary and its detail view.',
-      'Implemented the e-signature approval flow on requests, and attachments on purchase orders and cash advance requests.',
-      'Moved several finance reports from raw queries onto shared models, so one filtering rule applied across all of them instead of being written separately in each.',
-      'Worked on data import handling — clearer errors and logging on general ledger account imports — and fixed a database collation mismatch that was silently breaking customer search.',
-      'Contributed administrative interfaces, validation, PDF and document generation, Excel handling, and user role and permission controls.',
+      'Worked on backend logic and database operations across purchasing and finance modules.',
+      'Built and maintained accounts receivable features including adjustments, the AR dashboard, statements of account, and aging reports.',
+      'Added e-signature approvals and file attachments to selected workflows.',
+      'Refactored several finance reports to use shared models and filtering rules.',
+      'Improved import error handling and logging for general ledger data.',
+      'Fixed database and search issues, including a collation mismatch affecting customer search.',
+      'Worked on validation, PDF generation, Excel handling, and user roles and permissions.',
     ],
     features: [
       'Purchase requests and purchase orders',
@@ -199,20 +177,20 @@ export const projects = [
     caseStudy: true,
     notes: [
       {
-        title: 'Operations and finance on the same records',
-        text: 'A receiving report is the same object the accounts payable invoice is raised against, rather than something exported between two systems. That is what makes it possible to follow a transaction end to end.',
+        title: 'Shared records',
+        text: 'Some purchasing and finance steps use the same underlying records, which makes it easier to follow a transaction from receiving through payment.',
       },
       {
-        title: 'One definition of a filtering rule',
-        text: 'Several finance reports had each re-implemented the rule for hiding certain delivery receipts, and they disagreed with one another. Moving them onto shared models put that rule in one place, which is what stopped the reports contradicting each other.',
+        title: 'Consistent report filters',
+        text: 'Some reports had slightly different filtering logic. I moved the shared rules into common models so the reports used the same logic.',
       },
       {
-        title: 'A collation mismatch that looked like missing data',
-        text: 'Customer search silently returned nothing for some records. The cause was a collation mismatch on a database join rather than anything in the search logic — in a schema this wide, a broken feature and a drifted column look identical from the interface.',
+        title: 'Customer search fix',
+        text: 'A customer search issue turned out to be caused by mismatched database collations rather than the search code itself.',
       },
       {
-        title: 'Import errors people can act on',
-        text: 'Ledger account imports failed opaquely on malformed spreadsheets. Adding real error handling and logging turned an unusable feature into one the finance team could run themselves.',
+        title: 'Better import errors',
+        text: 'I improved the error handling and logging for ledger imports so failed spreadsheets were easier to troubleshoot.',
       },
     ],
   },
@@ -221,13 +199,13 @@ export const projects = [
     slug: 'habi-moments',
     kind: 'personal',
     name: 'Habi Moments',
-    category: 'Booking & photo booth application',
+    category: 'Booking & photo booth system',
     period: '2026',
-    credit: 'Personal project · built solo',
+    credit: 'Personal project',
     cardSummary:
-      'A booking, payment-tracking and photo-booth application for an events business, on self-hosted PostgreSQL.',
+      'A booking, payment tracking, and photo booth management system I built for an events business.',
     cardRole:
-      'Built it end to end — database schema, authentication, row-level security policies, the admin side, and a booth mode that keeps working when the venue’s network drops.',
+      'I built the database, authentication, admin features, and booth workflow.',
     tech: ['Next.js', 'TypeScript', 'React', 'PostgreSQL', 'Tailwind CSS'],
     links: { source: 'https://github.com/itsmeyanxi/hiraya-events' },
     caseStudy: false,
@@ -239,11 +217,11 @@ export const projects = [
     name: '书海 shuhai',
     category: 'Reading tracker · PWA',
     period: '2026',
-    credit: 'Personal project · built solo',
+    credit: 'Personal project',
     cardSummary:
-      'An installable reading tracker for novels and comics hosted on other sites, running on Cloudflare Workers and D1.',
+      'A personal reading tracker for novels and comics hosted on other websites.',
     cardRole:
-      'Built the Workers backend and database, per-site parsers with a fallback for sites that block server-side requests, and the Android share-target flow.',
+      'I built the backend, database, site parsers, and Android share flow.',
     tech: ['Cloudflare Workers', 'D1', 'JavaScript', 'PWA'],
     links: { live: 'https://shuhai.shuhai.workers.dev' },
     caseStudy: false,
@@ -254,23 +232,18 @@ export const professionalProjects = projects.filter((p) => p.kind === 'professio
 export const personalProjects = projects.filter((p) => p.kind === 'personal');
 export const findProject = (slug) => projects.find((p) => p.slug === slug);
 
-// ---------------------------------------------------------------------------
-// Experience
-// ---------------------------------------------------------------------------
-
 export const experience = [
   {
     company: 'Meatplus Trading Corp.',
-    // The official title. Not the same as the portfolio headline, on purpose.
     role: 'Backend Software Developer',
     roleNote: 'Full-stack responsibilities',
     dates: 'November 2025 — Present',
     location: 'Quezon City · On-site',
     current: true,
     bullets: [
-      'Co-develop internal web systems used across production, warehouse, purchasing and finance operations, turning day-to-day business processes into database-driven workflows.',
-      'Work across backend and frontend — business logic and database operations in Laravel and PHP against MySQL and MariaDB, and the interfaces on top in Blade, Tailwind CSS and Alpine.js.',
-      'Handle validation, debugging and testing, reporting and document generation, data import and export, and role-based access where it applies.',
+      'Help develop internal systems for production, warehouse, purchasing, and finance operations.',
+      'Work on both backend and frontend features using Laravel, PHP, MySQL/MariaDB, JavaScript, Blade, Tailwind CSS, and Alpine.js.',
+      'Handle database work, validation, debugging, testing, reports, document generation, data import/export, and role-based access.',
     ],
     tech: ['PHP', 'Laravel', 'MySQL', 'MariaDB', 'JavaScript', 'Blade', 'Tailwind CSS', 'Alpine.js'],
   },
@@ -281,7 +254,7 @@ export const experience = [
     location: 'UP Diliman, Quezon City',
     current: false,
     bullets: [
-      'Developed responsive React.js and Ionic interfaces, and supported testing, debugging and deployment for a cross-platform client application.',
+      'Built responsive React.js and Ionic interfaces and helped with testing, debugging, and deployment.',
     ],
     tech: ['React.js', 'Ionic', 'JavaScript'],
   },
@@ -313,14 +286,10 @@ export const certifications = {
   ],
 };
 
-// ---------------------------------------------------------------------------
-// Skills — ordered by how much they are actually used, strongest first.
-// ---------------------------------------------------------------------------
-
 export const skills = [
   {
     group: 'Primary',
-    note: 'What I work in daily',
+    note: 'Main stack',
     primary: true,
     items: ['PHP', 'Laravel', 'JavaScript', 'MySQL', 'MariaDB', 'SQL', 'Git'],
   },
@@ -330,7 +299,7 @@ export const skills = [
   },
   {
     group: 'Familiar',
-    note: 'Coursework and side projects',
+    note: 'Other technologies I’ve used',
     items: [
       'Python',
       'Java',
@@ -349,26 +318,10 @@ export const skills = [
   },
 ];
 
-export const howIWork = {
-  heading: 'How I Work',
-  lead:
-    'Development starts with the workflow, not the code. Most of the systems I have worked on replaced a process that already existed, so the first job is to understand what that process actually does — including the exceptions nobody wrote down.',
-  steps: [
-    { name: 'Understand', text: 'Sit with the current workflow and the people running it.' },
-    { name: 'Design', text: 'Agree the data model, the roles and the screens before building.' },
-    { name: 'Build', text: 'Deliver in working stages that can be reviewed.' },
-    { name: 'Test', text: 'Check the real cases, including the awkward ones.' },
-    { name: 'Deploy', text: 'Release it, with the documentation needed to run it.' },
-    { name: 'Improve', text: 'Keep adjusting as the business changes around it.' },
-  ],
-};
-
-// ---------------------------------------------------------------------------
-
 export const contact = {
-  heading: 'Let’s talk.',
+  heading: 'Get in touch',
   lead:
-    'I’m open to software development roles. Email is the quickest way to reach me.',
+    'If you’d like to talk about a software development role or my work, you can reach me by email or LinkedIn.',
 };
 
 export const navLinks = [
