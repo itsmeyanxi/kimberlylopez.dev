@@ -794,7 +794,6 @@ button {
   color: var(--accent);
 }
 
-.work__credit,
 .case-credit {
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -1803,4 +1802,27 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+}
+
+/* Labelled groups inside "What I worked on". */
+.worked {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.worked + .worked {
+  margin-top: 0.9rem;
+}
+
+.worked__title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.case-section > .worked + p,
+.case-section > p + .worked {
+  margin-top: 0.9rem;
 }

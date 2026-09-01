@@ -82,10 +82,6 @@ function ProfessionalProject({ project }) {
             <dt>Organisation</dt>
             <dd>{project.org}</dd>
           </div>
-          <div>
-            <dt>Period</dt>
-            <dd>{project.period}</dd>
-          </div>
         </dl>
       </div>
 
@@ -104,7 +100,6 @@ function ProfessionalProject({ project }) {
 
       <div className="work__role">
         <p className="work__role-label">My role</p>
-        <p className="work__credit">{project.credit}</p>
         <p>{project.cardRole}</p>
       </div>
 
@@ -141,7 +136,6 @@ function PersonalProject({ project }) {
         <p className="side-card__category">{project.category}</p>
       </div>
       <p className="side-card__summary">{project.cardSummary}</p>
-      <p className="side-card__role">{project.cardRole}</p>
       <div className="side-card__foot">
         <ul className="chips">
           {project.tech.map((t) => (
@@ -187,7 +181,7 @@ function Work() {
       id="work"
       index="01 — Work"
       title="Professional Work"
-      lead="Internal systems I help develop at Meatplus Trading Corp. I worked on both of these with another developer, so I have listed what I worked on separately."
+      lead="Internal systems I help develop at Meatplus Trading Corp."
     >
       <div className="work-list">
         {professionalProjects.map((project) => (

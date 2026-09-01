@@ -39,6 +39,7 @@ export const about = {
 
 // `kind` decides which section a project appears in.
 // The two work systems are internal, so no live link and no repository.
+// Project dates are not shown: they were inferred from commits, not given.
 export const projects = [
   {
     slug: 'pmai-warehouse',
@@ -46,14 +47,12 @@ export const projects = [
     name: 'PMAI Warehouse System',
     category: 'Production & Warehouse',
     org: 'Meatplus Trading Corp.',
-    period: '2026',
-    credit: 'Co-developed with one other developer',
+    team: 'Two developers',
     what:
-      'An internal production and warehouse system that tracks crates from weighing to warehouse receiving, storage, processing, stock movement, and dispatch. Each crate gets a QR code so the same record can be followed through the whole process.',
+      'PMAI is an internal production and warehouse system we use to track products from weighing to warehouse receiving, storage, processing, and dispatch. Each crate gets a QR code that is used to track it as it moves through the system.',
     cardSummary:
       'Internal production and warehouse system for tracking crates from weighing to dispatch.',
-    cardRole:
-      'I worked on production weighing, further processing, pallets, QR labels, receiving, and stock and production reports.',
+    cardRole: 'Worked on weighing, warehouse, reporting, and access features',
     workflow: [
       'Production weighing',
       'QR-coded crate identification',
@@ -62,28 +61,27 @@ export const projects = [
       'Inventory & stock movement',
       'Dispatch',
     ],
-    contribution: [
-      'Built the production weighing flow, including live scale readings, automatic SKU assignment based on weight, batch QR label printing, and CSV export.',
-      'Worked on the further-processing module, including item entry, customer routing, QR generation, receiving, and return tracking.',
-      'Built pallet creation and crate assignment, including printable pallet tags.',
-      'Worked on warehouse receiving and stock and production reports.',
-      'Added role-based access and per-user module permissions.',
-      'Fixed issues involving timezone handling, printed weights, and report performance.',
-      'Wrote the database schema documentation and generated the ER diagram.',
+    // Grouped by area. Entries with a title render as labelled blocks.
+    worked: [
+      {
+        title: 'Production weighing',
+        text: 'I worked on the weighing side, including live scale readings, automatic SKU assignment, QR labels, and CSV export.',
+      },
+      {
+        title: 'Further processing',
+        text: 'I worked on product entry, QR generation, receiving, and return tracking.',
+      },
+      {
+        title: 'Pallets & warehouse',
+        text: 'I worked on pallet creation, crate assignment, printable pallet tags, and parts of warehouse receiving.',
+      },
+      {
+        title: 'Reports & access',
+        text: 'I worked on stock and production reports, user roles, and module permissions.',
+      },
     ],
-    features: [
-      'QR generation and scanning',
-      'Crate tracking and crate audit',
-      'Inventory and stock movement',
-      'Pallets and storage assignment',
-      'Issuance and stock transfers',
-      'Production records and summaries',
-      'Customer picklists and dispatch',
-      'Reporting and audit functions',
-      'Printable documents (PDF)',
-      'Excel / CSV import and export',
-      'Role-based access control',
-    ],
+    workedNote:
+      'I also fixed issues involving timezone handling, printed weights, and report performance, and worked on the database documentation.',
     tech: [
       'PHP',
       'Laravel',
@@ -97,24 +95,6 @@ export const projects = [
     ],
     links: {},
     caseStudy: true,
-    notes: [
-      {
-        title: 'QR tracking',
-        text: 'Each crate gets one QR code when it is weighed. The same code is scanned later during receiving, storage, processing, and dispatch so the record does not have to be recreated at every step.',
-      },
-      {
-        title: 'Scale integration',
-        text: 'The weighing scale sends its latest reading to the server. The weighing screen then reads that value, so the operator does not have to type the weight manually.',
-      },
-      {
-        title: 'Printable labels',
-        text: 'Crate and pallet labels are generated as PDFs so their size stays consistent when printed from different computers.',
-      },
-      {
-        title: 'Access control',
-        text: 'The system has normal roles, but individual users can also be given access to specific modules when needed.',
-      },
-    ],
   },
 
   {
@@ -124,14 +104,12 @@ export const projects = [
     subtitle: 'Purchasing & Accounts Payable System',
     category: 'Purchasing & Finance',
     org: 'Meatplus Trading Corp.',
-    period: '2025 — 2026',
-    credit: 'Co-developed with one other developer',
+    team: 'Two developers',
     what:
-      'An internal purchasing and finance system that connects purchase requests, purchase orders, receiving, accounts payable, requests for payment, and check vouchers.',
+      'SOPOD is an internal system we use at Meatplus for purchasing and finance. It handles the process from purchase requests and purchase orders to receiving, AP invoices, requests for payment, and check vouchers.',
     cardSummary:
       'Internal purchasing and finance system covering the workflow from purchase request to payment.',
-    cardRole:
-      'I worked on backend logic, database operations, finance modules, admin interfaces, reports, document generation, and permissions.',
+    cardRole: 'Worked mainly on finance features, reports, imports, and permissions',
     workflow: [
       'Purchase Request',
       'Purchase Order',
@@ -140,27 +118,10 @@ export const projects = [
       'Request for Payment',
       'Check Voucher',
     ],
-    contribution: [
-      'Worked on backend logic and database operations across purchasing and finance modules.',
-      'Built and maintained accounts receivable features including adjustments, the AR dashboard, statements of account, and aging reports.',
-      'Added e-signature approvals and file attachments to selected workflows.',
-      'Refactored several finance reports to use shared models and filtering rules.',
-      'Improved import error handling and logging for general ledger data.',
-      'Fixed database and search issues, including a collation mismatch affecting customer search.',
-      'Worked on validation, PDF generation, Excel handling, and user roles and permissions.',
-    ],
-    features: [
-      'Purchase requests and purchase orders',
-      'Suppliers and receiving records',
-      'Receiving approvals',
-      'AP invoices and requests for payment',
-      'Check vouchers and payments',
-      'General ledger account data',
-      'Accounts receivable: adjustments, aging, statements',
-      'Administrative interfaces and validation',
-      'PDF and document generation',
-      'Excel import and export',
-      'User roles and permissions',
+    worked: [
+      'Most of my work on SOPOD has been on the finance side. I’ve worked on accounts receivable features including adjustments, the AR dashboard, statements of account, and aging reports.',
+      'I’ve also worked on finance reports, e-signature approvals, attachments, GL imports, validation, PDF generation, database changes, and user permissions.',
+      'One issue I fixed involved customer search, which turned out to be caused by mismatched database collations.',
     ],
     tech: [
       'PHP',
@@ -175,24 +136,6 @@ export const projects = [
     ],
     links: {},
     caseStudy: true,
-    notes: [
-      {
-        title: 'Shared records',
-        text: 'Some purchasing and finance steps use the same underlying records, which makes it easier to follow a transaction from receiving through payment.',
-      },
-      {
-        title: 'Consistent report filters',
-        text: 'Some reports had slightly different filtering logic. I moved the shared rules into common models so the reports used the same logic.',
-      },
-      {
-        title: 'Customer search fix',
-        text: 'A customer search issue turned out to be caused by mismatched database collations rather than the search code itself.',
-      },
-      {
-        title: 'Better import errors',
-        text: 'I improved the error handling and logging for ledger imports so failed spreadsheets were easier to troubleshoot.',
-      },
-    ],
   },
 
   {
@@ -200,12 +143,8 @@ export const projects = [
     kind: 'personal',
     name: 'Habi Moments',
     category: 'Booking & photo booth system',
-    period: '2026',
-    credit: 'Personal project',
     cardSummary:
-      'A booking, payment tracking, and photo booth management system I built for an events business.',
-    cardRole:
-      'I built the database, authentication, admin features, and booth workflow.',
+      'A booking and photo booth management system I built for Habi Moments. It handles bookings, payments, event information, and the booth workflow.',
     tech: ['Next.js', 'TypeScript', 'React', 'PostgreSQL', 'Tailwind CSS'],
     links: { source: 'https://github.com/itsmeyanxi/hiraya-events' },
     caseStudy: false,
@@ -214,19 +153,18 @@ export const projects = [
   {
     slug: 'shuhai',
     kind: 'personal',
-    name: '书海 shuhai',
+    name: '书海 Shuhai',
     category: 'Reading tracker · PWA',
-    period: '2026',
-    credit: 'Personal project',
     cardSummary:
-      'A personal reading tracker for novels and comics hosted on other websites.',
-    cardRole:
-      'I built the backend, database, site parsers, and Android share flow.',
+      'A personal reading tracker I made for novels and comics that I read on different websites. I built it because I wanted one place to keep track of what I’m reading and where I stopped.',
     tech: ['Cloudflare Workers', 'D1', 'JavaScript', 'PWA'],
     links: { live: 'https://shuhai.shuhai.workers.dev' },
     caseStudy: false,
   },
 ];
+
+export const projectAccessNote =
+  'Internal company system — source code and live access aren’t public.';
 
 export const professionalProjects = projects.filter((p) => p.kind === 'professional');
 export const personalProjects = projects.filter((p) => p.kind === 'personal');

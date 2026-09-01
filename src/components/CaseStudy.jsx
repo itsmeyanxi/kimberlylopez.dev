@@ -1,4 +1,8 @@
-import { findProject, professionalProjects, profile } from '../data/content.js';
+import {
+  findProject,
+  professionalProjects,
+  projectAccessNote,
+} from '../data/content.js';
 import Footer from './Footer.jsx';
 import Header from './Header.jsx';
 import { ArrowLeft, ArrowRight, useReveal } from './ui.jsx';
@@ -61,12 +65,8 @@ export default function CaseStudy({ slug }) {
                 <dd>{project.org}</dd>
               </div>
               <div>
-                <dt>Period</dt>
-                <dd>{project.period}</dd>
-              </div>
-              <div>
-                <dt>Role</dt>
-                <dd>{project.credit}</dd>
+                <dt>Team</dt>
+                <dd>{project.team}</dd>
               </div>
             </dl>
           </div>
@@ -81,8 +81,7 @@ export default function CaseStudy({ slug }) {
 
             {project.workflow && (
               <section className="case-section" data-reveal>
-                <h2>The workflow</h2>
-                <p>The system follows this order:</p>
+                <h2>How it works</h2>
                 <ol className="flow flow--stacked">
                   {project.workflow.map((step, i) => (
                     <li className="flow__step" key={step}>
@@ -97,42 +96,19 @@ export default function CaseStudy({ slug }) {
             )}
 
             <section className="case-section" data-reveal>
-              <h2>My role</h2>
-              <p className="case-credit">{project.credit}</p>
-              <p>{project.cardRole}</p>
-            </section>
-
-            <section className="case-section" data-reveal>
               <h2>What I worked on</h2>
-              <ul className="bullets">
-                {project.contribution.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+              {project.worked.map((item) =>
+                typeof item === 'string' ? (
+                  <p key={item}>{item}</p>
+                ) : (
+                  <div className="worked" key={item.title}>
+                    <p className="worked__title">{item.title}</p>
+                    <p>{item.text}</p>
+                  </div>
+                )
+              )}
+              {project.workedNote && <p>{project.workedNote}</p>}
             </section>
-
-            <section className="case-section" data-reveal>
-              <h2>Key functionality</h2>
-              <ul className="feature-grid">
-                {project.features.map((f) => (
-                  <li key={f}>{f}</li>
-                ))}
-              </ul>
-            </section>
-
-            {project.notes && (
-              <section className="case-section" data-reveal>
-                <h2>Notes</h2>
-                <div className="notes">
-                  {project.notes.map((note) => (
-                    <article className="note" key={note.title}>
-                      <h3>{note.title}</h3>
-                      <p>{note.text}</p>
-                    </article>
-                  ))}
-                </div>
-              </section>
-            )}
           </div>
 
           <aside className="case-side" data-reveal aria-label="Project details">
@@ -148,24 +124,8 @@ export default function CaseStudy({ slug }) {
             </div>
 
             <div>
-              <h2>Availability</h2>
-              {/* Internal system: no public link to give. */}
-              <p className="case-side__note">
-                This is an internal company system, so there is no public demo
-                and the code is not public. I am happy to walk through how it
-                works.
-              </p>
-            </div>
-
-            <div>
-              <h2>Questions about this?</h2>
-              <a
-                className="btn btn--primary btn--sm"
-                href={`mailto:${profile.email}?subject=${encodeURIComponent(project.name)}`}
-                style={{ marginTop: '0.7rem', width: '100%' }}
-              >
-                Email me
-              </a>
+              <h2>Access</h2>
+              <p className="case-side__note">{projectAccessNote}</p>
             </div>
           </aside>
         </div>
