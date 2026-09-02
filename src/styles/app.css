@@ -705,10 +705,12 @@ button {
 }
 
 /* Bottom-aligned so the pair reads as one component. */
-.work .link-arrow {
+.work__links {
   margin-top: auto;
   padding-top: 1.25rem;
-  align-self: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
 }
 
 /* Personal projects sit under the same section, tied to it by a rule rather
@@ -1207,6 +1209,10 @@ button {
   content: '→';
   margin-inline: 0.85rem 0.35rem;
   color: var(--ink-faint);
+}
+
+.project__demo {
+  margin-top: 0.9rem;
 }
 
 .project__nav {

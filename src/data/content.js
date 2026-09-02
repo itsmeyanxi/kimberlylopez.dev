@@ -57,6 +57,7 @@ export const projects = [
       'Dispatch',
     ],
     // Grouped by area. Entries with a title render as labelled blocks.
+    demo: 'https://paseiwarehouse-production.up.railway.app/login',
     tech: [
       'PHP',
       'Laravel',
@@ -92,6 +93,7 @@ export const projects = [
       'Request for Payment',
       'Check Voucher',
     ],
+    demo: 'https://sopod-production.up.railway.app/login',
     tech: [
       'PHP',
       'Laravel',
@@ -133,7 +135,7 @@ export const projects = [
 ];
 
 export const projectAccessNote =
-  'Internal company system — source code and live access aren’t public.';
+  'Internal company system, so the source code isn’t public. A demo deployment is available.';
 
 export const professionalProjects = projects.filter((p) => p.kind === 'professional');
 export const personalProjects = projects.filter((p) => p.kind === 'personal');

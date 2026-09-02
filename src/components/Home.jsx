@@ -91,12 +91,25 @@ function ProfessionalProject({ project }) {
       {/* The card carries the main stack; the project page lists all of it. */}
       <TechLine items={project.tech.slice(0, 6)} />
 
-      {project.caseStudy && (
-        <a className="link-arrow" href={`/work/${project.slug}/`}>
-          View project
-          <ArrowRight />
-        </a>
-      )}
+      <div className="work__links">
+        {project.caseStudy && (
+          <a className="link-arrow" href={`/work/${project.slug}/`}>
+            View project
+            <ArrowRight />
+          </a>
+        )}
+        {project.demo && (
+          <a
+            className="link-arrow"
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Live demo
+            <ArrowUpRight />
+          </a>
+        )}
+      </div>
     </article>
   );
 }

@@ -5,7 +5,7 @@ import {
 } from '../data/content.js';
 import Footer from './Footer.jsx';
 import Header from './Header.jsx';
-import { ArrowLeft, ArrowRight, useReveal } from './ui.jsx';
+import { ArrowLeft, ArrowRight, ArrowUpRight, useReveal } from './ui.jsx';
 
 const DOT = ' · ';
 const glue = (s) => String(s).replace(/ /g, ' ');
@@ -86,6 +86,17 @@ export default function CaseStudy({ slug }) {
         <section className="project__section" data-reveal>
           <h2>Access</h2>
           <p>{projectAccessNote}</p>
+          {project.demo && (
+            <a
+              className="link-arrow project__demo"
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open the live demo
+              <ArrowUpRight />
+            </a>
+          )}
         </section>
 
         <nav className="project__nav" aria-label="Projects">
