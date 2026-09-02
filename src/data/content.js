@@ -49,7 +49,7 @@ export const projects = [
       'PMAI is an internal production and warehouse system we use to track products from weighing to warehouse receiving, storage, processing, and dispatch. Each crate gets a QR code that is used to track it as it moves through the system.',
     cardSummary:
       'Internal production and warehouse system for tracking crates from weighing to dispatch.',
-    cardRole: 'Worked on weighing, warehouse, reporting, and access features',
+    areas: ['Weighing', 'Warehouse', 'Reporting', 'Access'],
     workflow: [
       'Production weighing',
       'QR-coded crate identification',
@@ -98,15 +98,14 @@ export const projects = [
     slug: 'sopod',
     kind: 'professional',
     name: 'SOPOD',
-    subtitle: 'Purchasing & Accounts Payable System',
-    category: 'Purchasing & Finance',
+    category: 'Purchasing & Accounts Payable',
     org: 'Meatplus Trading Corp.',
     team: 'Two developers',
     what:
       'SOPOD is an internal system we use at Meatplus for purchasing and finance. It handles the process from purchase requests and purchase orders to receiving, AP invoices, requests for payment, and check vouchers.',
     cardSummary:
       'Internal purchasing and finance system covering the workflow from purchase request to payment.',
-    cardRole: 'Worked mainly on finance features, reports, imports, and permissions',
+    areas: ['Finance features', 'Reports', 'Imports', 'Permissions'],
     workflow: [
       'Purchase Request',
       'Purchase Order',
@@ -141,8 +140,8 @@ export const projects = [
     name: 'Habi Moments',
     category: 'Booking & photo booth system',
     cardSummary:
-      'A booking and photo booth management system I built for Habi Moments. It handles bookings, payments, event information, and the booth workflow.',
-    tech: ['Next.js', 'TypeScript', 'React', 'PostgreSQL', 'Tailwind CSS'],
+      'Booking, payments and photo booth management system I built for Habi Moments.',
+    tech: ['Next.js', 'TypeScript', 'PostgreSQL'],
     links: { source: 'https://github.com/itsmeyanxi/hiraya-events' },
     caseStudy: false,
   },
@@ -153,8 +152,8 @@ export const projects = [
     name: '书海 Shuhai',
     category: 'Reading tracker · PWA',
     cardSummary:
-      'A personal reading tracker I made for novels and comics that I read on different websites. I built it because I wanted one place to keep track of what I’m reading and where I stopped.',
-    tech: ['Cloudflare Workers', 'D1', 'JavaScript', 'PWA'],
+      'Personal reading tracker for novels and comics I read on other websites.',
+    tech: ['Cloudflare Workers', 'D1', 'JavaScript'],
     links: { live: 'https://shuhai.shuhai.workers.dev' },
     caseStudy: false,
   },

@@ -21,9 +21,17 @@ import {
   useReveal,
 } from './ui.jsx';
 
+/* A non-breaking space before each separator, so a wrap never strands a
+   leading "· " at the start of the next line. */
+const DOT = ' · ';
+/* Spaces inside a name are made non-breaking too, so "Tailwind CSS" cannot be
+   split across two lines. */
+const glue = (s) => String(s).replace(/ /g, ' ');
+const dotted = (items) => items.map(glue).join(DOT);
+
 /** Technologies as a plain line rather than a row of bordered pills. */
 function TechLine({ items }) {
-  return <p className="tech">{items.join(' · ')}</p>;
+  return <p className="tech">{dotted(items)}</p>;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -53,7 +61,7 @@ function Hero() {
         </div>
 
         <p className="hero__facts" data-reveal>
-          {profile.facts.join(' · ')}
+          {dotted(profile.facts)}
         </p>
       </div>
     </section>
@@ -66,16 +74,18 @@ function ProfessionalProject({ project }) {
   return (
     <article className="work" data-reveal>
       <h3 className="work__name">{project.name}</h3>
-      {project.subtitle && <p className="work__subtitle">{project.subtitle}</p>}
+      <p className="work__category">{project.category}</p>
       <p className="work__org">{project.org}</p>
 
       <p className="work__what">{project.what}</p>
 
-      <p className="work__role">
-        <span>My role</span> {project.cardRole}
-      </p>
+      <div className="work__areas">
+        <p className="work__label">My work</p>
+        <p>{dotted(project.areas)}</p>
+      </div>
 
-      <TechLine items={project.tech} />
+      {/* The card carries the main stack; the project page lists all of it. */}
+      <TechLine items={project.tech.slice(0, 6)} />
 
       {project.caseStudy && (
         <a className="link-arrow" href={`/work/${project.slug}/`}>
@@ -87,7 +97,7 @@ function ProfessionalProject({ project }) {
   );
 }
 
-/** Personal work is presented as plain blocks, not as cards. */
+/** Personal work: compact rows, deliberately lighter than the cards above. */
 function PersonalProject({ project }) {
   const { links } = project;
 
@@ -103,7 +113,7 @@ function PersonalProject({ project }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Live site
+          Visit
           <ArrowUpRight />
         </a>
       )}
@@ -161,7 +171,7 @@ function Experience() {
               <h3 className="role__company">{role.company}</h3>
               <p className="role__title">
                 {role.role}
-                {role.roleNote && ` · ${role.roleNote}`}
+                {role.roleNote && `${DOT}${role.roleNote}`}
               </p>
               <p className="role__location">{role.location}</p>
 
@@ -196,7 +206,7 @@ function Experience() {
                 <li key={c.name}>
                   {c.name}
                   <span className="certs__meta">
-                    {c.issuer ? ` · ${c.issuer} · ${c.date}` : ` · ${c.date}`}
+                    {c.issuer ? `${DOT}${c.issuer}${DOT}${c.date}` : `${DOT}${c.date}`}
                   </span>
                 </li>
               ))}
@@ -231,7 +241,7 @@ function Skills() {
         {skills.map((group) => (
           <div key={group.group}>
             <dt>{group.note ?? group.group}</dt>
-            <dd className="tech">{group.items.join(' · ')}</dd>
+            <dd className="tech">{dotted(group.items)}</dd>
           </div>
         ))}
       </dl>

@@ -7,6 +7,9 @@ import Footer from './Footer.jsx';
 import Header from './Header.jsx';
 import { ArrowLeft, ArrowRight, useReveal } from './ui.jsx';
 
+const DOT = ' · ';
+const glue = (s) => String(s).replace(/ /g, ' ');
+
 export default function CaseStudy({ slug }) {
   useReveal();
 
@@ -48,13 +51,11 @@ export default function CaseStudy({ slug }) {
         <h1 className="project__title" data-reveal>
           {project.name}
         </h1>
-        {project.subtitle && (
-          <p className="project__subtitle" data-reveal>
-            {project.subtitle}
-          </p>
-        )}
+        <p className="project__subtitle" data-reveal>
+          {project.category}
+        </p>
         <p className="project__org" data-reveal>
-          {project.org} · {project.team}
+          {project.org}{DOT}{project.team}
         </p>
 
         <section className="project__section" data-reveal>
@@ -87,7 +88,7 @@ export default function CaseStudy({ slug }) {
 
         <section className="project__section" data-reveal>
           <h2>Technologies</h2>
-          <p className="tech">{project.tech.join(' · ')}</p>
+          <p className="tech">{project.tech.map(glue).join(DOT)}</p>
         </section>
 
         <section className="project__section" data-reveal>
