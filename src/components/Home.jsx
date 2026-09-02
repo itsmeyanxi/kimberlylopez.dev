@@ -21,16 +21,17 @@ import {
   useReveal,
 } from './ui.jsx';
 
+/** Technologies as a plain line rather than a row of bordered pills. */
+function TechLine({ items }) {
+  return <p className="tech">{items.join(' · ')}</p>;
+}
+
 /* -------------------------------------------------------------------------- */
 
 function Hero() {
   return (
     <section className="hero" id="top">
       <div className="shell">
-        <p className="hero__name" data-reveal>
-          {profile.name}
-        </p>
-
         <h1 className="hero__headline" data-reveal>
           <span className="hero__greeting">{profile.greeting}</span>{' '}
           {profile.headline}
@@ -51,11 +52,9 @@ function Hero() {
           </ResumeLink>
         </div>
 
-        <ul className="hero__facts" data-reveal>
-          {profile.facts.map((fact) => (
-            <li key={fact}>{fact}</li>
-          ))}
-        </ul>
+        <p className="hero__facts" data-reveal>
+          {profile.facts.join(' · ')}
+        </p>
       </div>
     </section>
   );
@@ -63,103 +62,62 @@ function Hero() {
 
 /* -------------------------------------------------------------------------- */
 
-/** The two work systems. These get the most room on the page. */
 function ProfessionalProject({ project }) {
   return (
     <article className="work" data-reveal>
-      <div className="work__head">
-        <div>
-          <h3 className="work__name">
-            {project.name}
-            {project.subtitle && (
-              <span className="work__subtitle">{project.subtitle}</span>
-            )}
-          </h3>
-          <p className="work__category">{project.category}</p>
-        </div>
-        <dl className="work__meta">
-          <div>
-            <dt>Organisation</dt>
-            <dd>{project.org}</dd>
-          </div>
-        </dl>
-      </div>
+      <h3 className="work__name">{project.name}</h3>
+      {project.subtitle && <p className="work__subtitle">{project.subtitle}</p>}
+      <p className="work__org">{project.org}</p>
 
       <p className="work__what">{project.what}</p>
 
-      <div className="work__role">
-        <p className="work__role-label">My role</p>
-        <p>{project.cardRole}</p>
-      </div>
+      <p className="work__role">
+        <span>My role</span> {project.cardRole}
+      </p>
 
-      <div className="work__foot">
-        <ul className="chips">
-          {project.tech.slice(0, 5).map((t) => (
-            <li className="chip" key={t}>
-              {t}
-            </li>
-          ))}
-          {project.tech.length > 5 && (
-            <li className="chip chip--more">+{project.tech.length - 5}</li>
-          )}
-        </ul>
-        {project.caseStudy && (
-          <a className="link-arrow" href={`/work/${project.slug}/`}>
-            View project
-            <ArrowRight />
-          </a>
-        )}
-      </div>
+      <TechLine items={project.tech} />
+
+      {project.caseStudy && (
+        <a className="link-arrow" href={`/work/${project.slug}/`}>
+          View project
+          <ArrowRight />
+        </a>
+      )}
     </article>
   );
 }
 
-/** Personal work, deliberately given less room. */
+/** Personal work is presented as plain blocks, not as cards. */
 function PersonalProject({ project }) {
   const { links } = project;
 
   return (
-    <article className="side-card" data-reveal>
-      <div>
-        <h3 className="side-card__name">{project.name}</h3>
-        <p className="side-card__category">{project.category}</p>
-      </div>
-      <p className="side-card__summary">{project.cardSummary}</p>
-      <div className="side-card__foot">
-        <ul className="chips">
-          {project.tech.map((t) => (
-            <li className="chip" key={t}>
-              {t}
-            </li>
-          ))}
-        </ul>
-        {(links.live || links.source) && (
-          <div className="side-card__links">
-            {links.live && (
-              <a
-                className="link-arrow"
-                href={links.live}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Live
-                <ArrowUpRight />
-              </a>
-            )}
-            {links.source && (
-              <a
-                className="link-arrow"
-                href={links.source}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
-                <ArrowUpRight />
-              </a>
-            )}
-          </div>
-        )}
-      </div>
+    <article className="side" data-reveal>
+      <h4 className="side__name">{project.name}</h4>
+      <p className="side__summary">{project.cardSummary}</p>
+      <TechLine items={project.tech} />
+      {links.live && (
+        <a
+          className="link-arrow"
+          href={links.live}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Live site
+          <ArrowUpRight />
+        </a>
+      )}
+      {links.source && (
+        <a
+          className="link-arrow"
+          href={links.source}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+          <ArrowUpRight />
+        </a>
+      )}
     </article>
   );
 }
@@ -168,8 +126,7 @@ function Work() {
   return (
     <Section
       id="work"
-      index="01 — Work"
-      title="Professional Work"
+      title="Work"
       lead="Internal systems I help develop at Meatplus Trading Corp."
     >
       <div className="work-list">
@@ -178,14 +135,10 @@ function Work() {
         ))}
       </div>
 
-      <div className="subsection" data-reveal>
-        <h3 className="subsection__title">Personal Projects</h3>
-        <p className="subsection__lead">
-          Projects I built on my own.
-        </p>
-      </div>
-
-      <div className="side-grid">
+      <h3 className="subsection__title" data-reveal>
+        Personal projects
+      </h3>
+      <div className="side-list">
         {personalProjects.map((project) => (
           <PersonalProject key={project.slug} project={project} />
         ))}
@@ -198,26 +151,19 @@ function Work() {
 
 function Experience() {
   return (
-    <Section id="experience" index="02 — Experience" title="Experience">
+    <Section id="experience" title="Experience">
       <div className="timeline">
         {experience.map((role) => (
           <article className="role" key={role.company} data-reveal>
-            <div className="role__meta">
-              <p className="role__dates">{role.dates}</p>
-              <p className="role__location">{role.location}</p>
-            </div>
+            <p className="role__dates">{role.dates}</p>
 
             <div>
-              <h3 className="role__company">
-                {role.current && <span className="dot" aria-hidden="true" />}
-                {role.company}
-              </h3>
+              <h3 className="role__company">{role.company}</h3>
               <p className="role__title">
                 {role.role}
-                {role.roleNote && (
-                  <span className="role__note">{role.roleNote}</span>
-                )}
+                {role.roleNote && ` · ${role.roleNote}`}
               </p>
+              <p className="role__location">{role.location}</p>
 
               <ul className="bullets">
                 {role.bullets.map((b) => (
@@ -225,45 +171,32 @@ function Experience() {
                 ))}
               </ul>
 
-              {role.tech.length > 0 && (
-                <ul className="chips role__tech">
-                  {role.tech.map((t) => (
-                    <li className="chip" key={t}>
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <TechLine items={role.tech} />
             </div>
           </article>
         ))}
 
         {education.items.map((item) => (
           <article className="role" key={item.school} data-reveal>
-            <div className="role__meta">
-              <p className="role__dates">{item.dates}</p>
-              <p className="role__location">{item.location}</p>
-            </div>
+            <p className="role__dates">{item.dates}</p>
             <div>
-              <p className="role__section">{education.heading}</p>
               <h3 className="role__company">{item.school}</h3>
               <p className="role__title">{item.credential}</p>
+              <p className="role__location">{item.location}</p>
             </div>
           </article>
         ))}
 
         <article className="role" data-reveal>
-          <div className="role__meta">
-            <p className="role__dates">{certifications.dates}</p>
-          </div>
+          <p className="role__dates">{certifications.dates}</p>
           <div>
-            <p className="role__section">{certifications.heading}</p>
+            <h3 className="role__company">{certifications.heading}</h3>
             <ul className="certs">
               {certifications.items.map((c) => (
                 <li key={c.name}>
-                  <span className="certs__name">{c.name}</span>
+                  {c.name}
                   <span className="certs__meta">
-                    {c.issuer ? `${c.issuer} · ${c.date}` : c.date}
+                    {c.issuer ? ` · ${c.issuer} · ${c.date}` : ` · ${c.date}`}
                   </span>
                 </li>
               ))}
@@ -279,13 +212,11 @@ function Experience() {
 
 function About() {
   return (
-    <Section id="about" index="03 — About" title={about.heading}>
+    <Section id="about" title={about.heading}>
       <div className="about" data-reveal>
-        <div className="about__body">
-          {about.body.map((p) => (
-            <p key={p.slice(0, 40)}>{p}</p>
-          ))}
-        </div>
+        {about.body.map((p) => (
+          <p key={p.slice(0, 40)}>{p}</p>
+        ))}
       </div>
     </Section>
   );
@@ -295,90 +226,50 @@ function About() {
 
 function Skills() {
   return (
-    <Section
-      id="skills"
-      index="04 — Skills"
-      title="Technical Skills"
-    >
-      <div className="skills" data-reveal>
+    <Section id="skills" title="Skills">
+      <dl className="skills" data-reveal>
         {skills.map((group) => (
-          <div
-            className={`skill-group${group.primary ? ' skill-group--primary' : ''}`}
-            key={group.group}
-          >
-            <div className="skill-group__head">
-              <h3>{group.group}</h3>
-              {group.note && <p className="skill-group__note">{group.note}</p>}
-            </div>
-            <ul className="chips">
-              {group.items.map((item) => (
-                <li className="chip" key={item}>
-                  {item}
-                </li>
-              ))}
-            </ul>
+          <div key={group.group}>
+            <dt>{group.note ?? group.group}</dt>
+            <dd className="tech">{group.items.join(' · ')}</dd>
           </div>
         ))}
-      </div>
+      </dl>
     </Section>
   );
 }
 
 /* -------------------------------------------------------------------------- */
 
-/* -------------------------------------------------------------------------- */
-
 function Contact() {
-  const channels = [
-    { label: 'Email', value: profile.email, href: `mailto:${profile.email}` },
-    {
-      label: 'LinkedIn',
-      value: 'lopezkcc714',
-      href: profile.linkedin,
-      external: true,
-    },
-    {
-      label: 'GitHub',
-      value: 'itsmeyanxi',
-      href: profile.github,
-      external: true,
-    },
-  ];
-
   return (
-    <Section id="contact" index="05 — Contact">
+    <Section id="contact" title={contact.heading}>
       <div className="contact" data-reveal>
-        <div>
-          <h2 className="contact__heading">{contact.heading}</h2>
-          <p className="contact__lead">{contact.lead}</p>
-        </div>
-        <div className="contact__cta">
-          <a className="btn btn--primary" href={`mailto:${profile.email}`}>
-            <Mail />
-            Email Me
-          </a>
-          <ResumeLink className="btn btn--secondary">
-            <Download />
-            Download Resume
-          </ResumeLink>
-        </div>
-      </div>
+        <p className="contact__lead">{contact.lead}</p>
 
-      <div className="channels" data-reveal>
-        {channels.map((c) => (
-          <a
-            className="channel"
-            key={c.label}
-            href={c.href}
-            {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-          >
-            <span className="channel__label">{c.label}</span>
-            <span className="channel__value">
-              {c.value}
-              {c.external && <ArrowUpRight size={12} />}
-            </span>
-          </a>
-        ))}
+        <ul className="contact__links">
+          <li>
+            <a href={`mailto:${profile.email}`}>
+              <Mail />
+              {profile.email}
+            </a>
+          </li>
+          <li>
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">
+              LinkedIn
+              <ArrowUpRight size={12} />
+            </a>
+          </li>
+          <li>
+            <a href={profile.github} target="_blank" rel="noopener noreferrer">
+              GitHub
+              <ArrowUpRight size={12} />
+            </a>
+          </li>
+          <li>
+            <ResumeLink>Resume (PDF)</ResumeLink>
+          </li>
+        </ul>
       </div>
     </Section>
   );

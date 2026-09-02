@@ -185,18 +185,13 @@ export function ThemeToggle() {
    Section scaffolding
    -------------------------------------------------------------------------- */
 
-export function Section({ id, index, title, lead, children, className = '', headId }) {
+export function Section({ id, title, lead, children, className = '' }) {
   return (
     <section id={id} className={`section ${className}`.trim()}>
       <div className="shell">
         {(title || lead) && (
           <header className="section-head" data-reveal>
-            {index && <p className="eyebrow">{index}</p>}
-            {title && (
-              <h2 className="section-title" id={headId}>
-                {title}
-              </h2>
-            )}
+            {title && <h2 className="section-title">{title}</h2>}
             {lead && <p className="section-lead">{lead}</p>}
           </header>
         )}
