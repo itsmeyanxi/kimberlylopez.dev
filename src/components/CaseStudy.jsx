@@ -66,8 +66,12 @@ export default function CaseStudy({ slug }) {
         {project.workflow && (
           <section className="project__section" data-reveal>
             <h2>How it works</h2>
-            {/* A plain arrow chain reads better here than six numbered boxes. */}
-            <p className="flow">{project.workflow.join(' → ')}</p>
+            {/* A wrapped sequence, with the arrows as separators. No boxes. */}
+            <ol className="flow">
+              {project.workflow.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ol>
           </section>
         )}
 

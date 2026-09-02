@@ -51,12 +51,10 @@
 
   /* Frosted card: a translucent surface over the paper, a softened border,
      and a hairline highlight along the top edge. */
-  --card-bg: color-mix(in srgb, var(--surface) 68%, transparent);
-  --card-border: color-mix(in srgb, var(--line) 65%, transparent);
-  --card-border-hover: color-mix(in srgb, var(--line-strong) 75%, transparent);
-  --card-highlight: rgba(255, 255, 255, 0.55);
-  --card-shadow: 0 1px 2px rgba(32, 36, 29, 0.04),
-    0 8px 24px -16px rgba(32, 36, 29, 0.14);
+  --card-bg: color-mix(in srgb, var(--surface) 82%, transparent);
+  --card-border: color-mix(in srgb, var(--line) 55%, transparent);
+  --card-border-hover: color-mix(in srgb, var(--line-strong) 60%, transparent);
+  --card-shadow: none;
 
   --shadow-sm: 0 1px 2px rgba(32, 36, 29, 0.05),
     0 1px 3px rgba(32, 36, 29, 0.04);
@@ -90,12 +88,10 @@
 
   --focus: #8ea47a;
 
-  --card-bg: color-mix(in srgb, var(--surface) 68%, transparent);
-  --card-border: color-mix(in srgb, var(--line-strong) 55%, transparent);
-  --card-border-hover: color-mix(in srgb, var(--line-strong) 90%, transparent);
-  --card-highlight: rgba(255, 255, 255, 0.05);
-  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.28),
-    0 10px 26px -18px rgba(0, 0, 0, 0.6);
+  --card-bg: color-mix(in srgb, var(--surface) 82%, transparent);
+  --card-border: color-mix(in srgb, var(--line-strong) 45%, transparent);
+  --card-border-hover: color-mix(in srgb, var(--line-strong) 70%, transparent);
+  --card-shadow: none;
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
   --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.35), 0 16px 32px -16px rgba(0, 0, 0, 0.75);
@@ -585,80 +581,59 @@ button {
 .work-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
-  gap: clamp(0.9rem, 1.8vw, 1.25rem);
-  align-items: start;
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
-/* An editorial summary that happens to sit on a card: a warm border, a
-   surface a shade off the page, square-ish corners, no shadow. Heights are
-   not forced to match — a shorter project stays shorter. */
+/* One treatment for both projects: same surface, same faint edge, same
+   rhythm. The content carries the weight, not the container. */
 .work {
-  position: relative;
-  padding: clamp(1.25rem, 2.2vw, 1.6rem);
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.45rem, 2.6vw, 1.9rem);
   background: var(--card-bg);
-  backdrop-filter: blur(10px) saturate(112%);
-  -webkit-backdrop-filter: blur(10px) saturate(112%);
+  backdrop-filter: blur(10px) saturate(110%);
+  -webkit-backdrop-filter: blur(10px) saturate(110%);
   border: 1px solid var(--card-border);
-  border-radius: 14px;
+  border-radius: 10px;
   box-shadow: var(--card-shadow);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* A hairline of light along the top edge — what actually reads as glass on a
-   flat background, since there is nothing behind the card to blur. */
-.work::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 1px;
-  border-radius: 14px 14px 0 0;
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--card-highlight) 18%,
-    var(--card-highlight) 82%,
-    transparent
-  );
-  pointer-events: none;
+  transition: border-color 0.2s ease;
 }
 
 .work:hover {
   border-color: var(--card-border-hover);
-  box-shadow: 0 1px 2px rgba(32, 36, 29, 0.05),
-    0 12px 30px -18px rgba(32, 36, 29, 0.2);
 }
 
 .work__name {
   font-family: var(--font-serif);
-  font-size: clamp(1.2rem, 2vw, 1.35rem);
+  font-size: clamp(1.22rem, 2vw, 1.38rem);
   font-weight: 500;
   letter-spacing: -0.014em;
   line-height: 1.25;
 }
 
 .work__category {
-  margin-top: 0.15rem;
+  margin-top: 0.3rem;
   font-size: 0.9rem;
   color: var(--accent);
 }
 
 .work__org {
-  margin-top: 0.1rem;
-  font-size: 0.85rem;
+  margin-top: 0.15rem;
+  font-size: 0.86rem;
   color: var(--ink-faint);
 }
 
 .work__what {
-  margin-top: 0.85rem;
-  font-size: 0.94rem;
-  line-height: 1.6;
+  margin-top: 1.1rem;
+  font-size: 0.95rem;
+  line-height: 1.68;
   color: var(--ink-muted);
 }
 
-/* The one green rule on the card, marking what was mine. */
+/* The one green mark on the card. */
 .work__areas {
-  margin-top: 0.9rem;
-  padding-left: 0.8rem;
+  margin-top: 1.1rem;
+  padding-left: 0.85rem;
   border-left: 2px solid var(--accent-line);
 }
 
@@ -669,18 +644,21 @@ button {
 }
 
 .work__areas p + p {
-  margin-top: 0.1rem;
+  margin-top: 0.2rem;
   font-size: 0.92rem;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--ink-muted);
 }
 
 .work .tech {
-  margin-top: 0.85rem;
+  margin-top: 1.05rem;
 }
 
+/* Bottom-aligned so the pair reads as one component. */
 .work .link-arrow {
-  margin-top: 1rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  align-self: flex-start;
 }
 
 /* Personal projects sit under the same section, tied to it by a rule rather
@@ -699,13 +677,13 @@ button {
 .side-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
-  gap: clamp(1.25rem, 2.5vw, 2rem);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
   align-items: start;
 }
 
 .side {
   display: grid;
-  gap: 0.25rem;
+  gap: 0.3rem;
   align-content: start;
 }
 
@@ -743,7 +721,7 @@ button {
   display: grid;
   grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
   gap: 0.35rem clamp(1rem, 4vw, 3rem);
-  padding-block: clamp(1.5rem, 3vw, 2.25rem);
+  padding-block: clamp(1.85rem, 3.5vw, 2.75rem);
   border-top: 1px solid var(--line);
 }
 
@@ -764,19 +742,19 @@ button {
 }
 
 .role__title {
-  margin-top: 0.15rem;
+  margin-top: 0.3rem;
   font-size: 0.94rem;
   color: var(--accent);
 }
 
 .role__location {
-  margin-top: 0.1rem;
+  margin-top: 0.25rem;
   font-size: 0.88rem;
   color: var(--ink-faint);
 }
 
 .role .bullets {
-  margin-top: 0.9rem;
+  margin-top: 1.1rem;
 }
 
 .role .tech {
@@ -792,7 +770,7 @@ button {
   position: relative;
   padding-left: 1rem;
   font-size: 0.94rem;
-  line-height: 1.6;
+  line-height: 1.68;
   color: var(--ink-muted);
 }
 
@@ -835,11 +813,11 @@ button {
 
 .about {
   display: grid;
-  gap: 1.1rem;
-  max-width: 62ch;
+  gap: 1.25rem;
+  max-width: 70ch;
   color: var(--ink-muted);
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 1.03rem;
+  line-height: 1.75;
 }
 
 /* ---------------------------------------------------------------------------
@@ -848,17 +826,17 @@ button {
 
 .skills {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.6rem;
   margin: 0;
-  max-width: 64ch;
+  max-width: 70ch;
 }
 
 .skills dt {
-  font-size: 0.95rem;
+  font-size: 0.97rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--ink-strong);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.4rem;
 }
 
 .skills dd {
@@ -871,8 +849,8 @@ button {
 
 .contact {
   display: grid;
-  gap: 1.75rem;
-  max-width: 52ch;
+  gap: 1.35rem;
+  max-width: 56ch;
 }
 
 .contact__lead {
@@ -883,7 +861,7 @@ button {
 
 .contact__links {
   display: grid;
-  gap: 0.7rem;
+  gap: 0.6rem;
 }
 
 .contact__links a {
@@ -912,9 +890,15 @@ button {
    Footer
    --------------------------------------------------------------------------- */
 
+/* The contact block runs into the footer, so the page does not end on two
+   separate pockets of empty space. */
+#contact.section {
+  padding-bottom: clamp(2.25rem, 4vw, 3.25rem);
+}
+
 .footer {
   border-top: 1px solid var(--line);
-  padding-block: clamp(2rem, 4vw, 3rem);
+  padding-block: clamp(1.75rem, 3vw, 2.5rem);
 }
 
 .footer__inner {
@@ -969,8 +953,8 @@ button {
    --------------------------------------------------------------------------- */
 
 .project {
-  padding-block: clamp(2.5rem, 6vw, 4rem) clamp(3rem, 6vw, 5rem);
-  max-width: 44rem;
+  padding-block: clamp(2.5rem, 5vw, 3.5rem) clamp(2.5rem, 5vw, 4rem);
+  max-width: 52rem;
 }
 
 .breadcrumb {
@@ -1007,7 +991,7 @@ button {
 }
 
 .project__section {
-  margin-top: clamp(2rem, 4vw, 2.75rem);
+  margin-top: clamp(2.25rem, 4vw, 3rem);
 }
 
 .project__section h2 {
@@ -1020,8 +1004,9 @@ button {
 
 .project__section p {
   color: var(--ink-muted);
-  font-size: 1rem;
-  line-height: 1.68;
+  font-size: 1.01rem;
+  line-height: 1.72;
+  max-width: 68ch;
 }
 
 .project__section p + p,
@@ -1030,23 +1015,38 @@ button {
   margin-top: 0.9rem;
 }
 
-/* The workflow as a sentence-like chain rather than six numbered boxes. */
-.project__section .flow {
-  color: var(--ink-strong);
-  line-height: 1.9;
+/* The workflow wraps as a sequence, with the arrow carrying the movement. */
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flow li {
   font-size: 0.97rem;
-  font-family: var(--font-sans);
+  line-height: 1.6;
+  color: var(--ink-strong);
+}
+
+.flow li + li::before {
+  content: '→';
+  margin-inline: 0.7rem;
+  color: var(--accent);
 }
 
 .worked + .worked {
-  margin-top: 1.1rem;
+  margin-top: 1.5rem;
 }
 
 .worked h3 {
-  font-size: 0.96rem;
+  font-size: 0.97rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.3rem;
 }
 
 .project__nav {
