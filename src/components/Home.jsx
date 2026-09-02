@@ -45,10 +45,6 @@ function Hero() {
           {profile.headline}
         </h1>
 
-        <p className="hero__intro" data-reveal>
-          {profile.intro}
-        </p>
-
         <div className="hero__actions" data-reveal>
           <a className="btn btn--primary" href="#work">
             View My Work
@@ -170,10 +166,7 @@ function Experience() {
 
             <div>
               <h3 className="role__company">{role.company}</h3>
-              <p className="role__title">
-                {role.role}
-                {role.roleNote && `${DOT}${role.roleNote}`}
-              </p>
+              <p className="role__title">{role.role}</p>
               <p className="role__location">{role.location}</p>
 
               <ul className="bullets">

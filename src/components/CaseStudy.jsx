@@ -76,21 +76,6 @@ export default function CaseStudy({ slug }) {
         )}
 
         <section className="project__section" data-reveal>
-          <h2>What I worked on</h2>
-          {project.worked.map((item) =>
-            typeof item === 'string' ? (
-              <p key={item}>{item}</p>
-            ) : (
-              <div className="worked" key={item.title}>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </div>
-            )
-          )}
-          {project.workedNote && <p>{project.workedNote}</p>}
-        </section>
-
-        <section className="project__section" data-reveal>
           <h2>Technologies</h2>
           <p className="tech">{project.tech.map(glue).join(DOT)}</p>
         </section>

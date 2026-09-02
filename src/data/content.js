@@ -9,11 +9,8 @@ export const profile = {
   greeting: 'Hi, I’m Kimberly.',
   headline:
     'I’m a software developer working mainly with PHP, Laravel, JavaScript, and MySQL.',
-  intro:
-    'I work on internal systems for warehouse, production, purchasing, and finance operations.',
   facts: [
     'Backend Software Developer at Meatplus Trading Corp.',
-    'Full-stack responsibilities',
     'Quezon City, Philippines',
   ],
   email: 'lopezkcc714@gmail.com',
@@ -59,26 +56,6 @@ export const projects = [
       'Dispatch',
     ],
     // Grouped by area. Entries with a title render as labelled blocks.
-    worked: [
-      {
-        title: 'Production weighing',
-        text: 'I worked on the production weighing workflow, including live scale readings, automatic SKU assignment, QR labels, and CSV export.',
-      },
-      {
-        title: 'Further processing',
-        text: 'I worked on product entry, QR generation, receiving, and return tracking.',
-      },
-      {
-        title: 'Pallets & warehouse',
-        text: 'I worked on pallet creation, crate assignment, printable pallet tags, and parts of warehouse receiving.',
-      },
-      {
-        title: 'Reports & access',
-        text: 'I worked on stock and production reports, user roles, and module permissions.',
-      },
-    ],
-    workedNote:
-      'I also fixed issues with timezone handling, printed weights, and report performance, and helped with the database documentation.',
     tech: [
       'PHP',
       'Laravel',
@@ -113,11 +90,6 @@ export const projects = [
       'AP Invoice',
       'Request for Payment',
       'Check Voucher',
-    ],
-    worked: [
-      'Most of my work on SOPOD has been on the finance side. I’ve worked on accounts receivable features including adjustments, the AR dashboard, statements of account, and aging reports.',
-      'I’ve also worked on finance reports, e-signature approvals, attachments, GL imports, validation, PDF generation, database changes, and user permissions.',
-      'One issue I fixed involved customer search, which turned out to be caused by mismatched database collations.',
     ],
     tech: [
       'PHP',
@@ -170,7 +142,6 @@ export const experience = [
   {
     company: 'Meatplus Trading Corp.',
     role: 'Backend Software Developer',
-    roleNote: 'Full-stack responsibilities',
     dates: 'November 2025 — Present',
     location: 'Quezon City · On-site',
     current: true,

@@ -546,13 +546,6 @@ button {
   color: var(--accent);
 }
 
-.hero__intro {
-  margin-top: 1.5rem;
-  max-width: 52ch;
-  font-size: 1.02rem;
-  color: var(--ink-muted);
-}
-
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
@@ -1065,9 +1058,7 @@ button {
   max-width: 68ch;
 }
 
-.project__section p + p,
-.project__section p + .worked,
-.project__section .worked + p {
+.project__section p + p {
   margin-top: 0.9rem;
 }
 
@@ -1092,17 +1083,6 @@ button {
   content: '→';
   margin-inline: 0.7rem;
   color: var(--accent);
-}
-
-.worked + .worked {
-  margin-top: 1.5rem;
-}
-
-.worked h3 {
-  font-size: 0.97rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin-bottom: 0.3rem;
 }
 
 .project__nav {
