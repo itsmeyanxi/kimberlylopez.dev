@@ -49,6 +49,15 @@
   --radius: 4px;
   --radius-lg: 8px;
 
+  /* Frosted card: a translucent surface over the paper, a softened border,
+     and a hairline highlight along the top edge. */
+  --card-bg: color-mix(in srgb, var(--surface) 68%, transparent);
+  --card-border: color-mix(in srgb, var(--line) 65%, transparent);
+  --card-border-hover: color-mix(in srgb, var(--line-strong) 75%, transparent);
+  --card-highlight: rgba(255, 255, 255, 0.55);
+  --card-shadow: 0 1px 2px rgba(32, 36, 29, 0.04),
+    0 8px 24px -16px rgba(32, 36, 29, 0.14);
+
   --shadow-sm: 0 1px 2px rgba(32, 36, 29, 0.05),
     0 1px 3px rgba(32, 36, 29, 0.04);
   --shadow-md: 0 2px 4px rgba(32, 36, 29, 0.05),
@@ -80,6 +89,13 @@
   --line-strong: #414a3d;
 
   --focus: #8ea47a;
+
+  --card-bg: color-mix(in srgb, var(--surface) 68%, transparent);
+  --card-border: color-mix(in srgb, var(--line-strong) 55%, transparent);
+  --card-border-hover: color-mix(in srgb, var(--line-strong) 90%, transparent);
+  --card-highlight: rgba(255, 255, 255, 0.05);
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.28),
+    0 10px 26px -18px rgba(0, 0, 0, 0.6);
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
   --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.35), 0 16px 32px -16px rgba(0, 0, 0, 0.75);
@@ -577,15 +593,39 @@ button {
    surface a shade off the page, square-ish corners, no shadow. Heights are
    not forced to match — a shorter project stays shorter. */
 .work {
+  position: relative;
   padding: clamp(1.25rem, 2.2vw, 1.6rem);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 5px;
-  transition: border-color 0.2s ease;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px) saturate(112%);
+  -webkit-backdrop-filter: blur(10px) saturate(112%);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  box-shadow: var(--card-shadow);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* A hairline of light along the top edge — what actually reads as glass on a
+   flat background, since there is nothing behind the card to blur. */
+.work::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  border-radius: 14px 14px 0 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--card-highlight) 18%,
+    var(--card-highlight) 82%,
+    transparent
+  );
+  pointer-events: none;
 }
 
 .work:hover {
-  border-color: var(--line-strong);
+  border-color: var(--card-border-hover);
+  box-shadow: 0 1px 2px rgba(32, 36, 29, 0.05),
+    0 12px 30px -18px rgba(32, 36, 29, 0.2);
 }
 
 .work__name {
