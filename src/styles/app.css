@@ -563,10 +563,10 @@ button {
 
 .tech {
   font-family: var(--font-mono);
-  font-size: 0.845rem;
-  line-height: 1.65;
-  color: var(--ink-faint);
-  letter-spacing: -0.01em;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--ink-muted);
+  letter-spacing: -0.005em;
   /* The non-breaking spaces that keep "Tailwind CSS" together can make a
      token wider than a narrow column, so allow a break as a last resort. */
   overflow-wrap: break-word;

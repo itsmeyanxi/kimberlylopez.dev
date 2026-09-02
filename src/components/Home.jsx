@@ -137,7 +137,7 @@ function Work() {
     <Section
       id="work"
       title="Work"
-      lead="Internal systems I help develop at Meatplus Trading Corp."
+      lead="Some of the internal systems I work on at Meatplus Trading Corp."
     >
       <div className="work-list">
         {professionalProjects.map((project) => (
@@ -146,7 +146,7 @@ function Work() {
       </div>
 
       <h3 className="subsection__title" data-reveal>
-        Personal projects
+        Other projects
       </h3>
       <div className="side-list">
         {personalProjects.map((project) => (
