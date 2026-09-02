@@ -217,7 +217,7 @@ export const skills = [
   },
   {
     group: 'Tools',
-    items: ['VS Code', 'Vite', 'SAP', 'Burp Suite', 'Android Studio'],
+    items: ['VS Code', 'SAP', 'Burp Suite', 'Android Studio'],
   },
 ];
 
