@@ -12,6 +12,8 @@
   --paper: #f5f1e8;
   --surface: #faf8f2;
   --surface-sunken: #eee9dc;
+  /* Barely off the paper — enough to read as a band, not as a colour. */
+  --surface-alt: #f2f0e6;
   --surface-raised: #faf8f2;
 
   /* Ink */
@@ -52,8 +54,8 @@
   /* Frosted card: a translucent surface over the paper, a softened border,
      and a hairline highlight along the top edge. */
   --card-bg: color-mix(in srgb, var(--surface) 82%, transparent);
-  --card-border: color-mix(in srgb, var(--line) 55%, transparent);
-  --card-border-hover: color-mix(in srgb, var(--line-strong) 60%, transparent);
+  --card-border: color-mix(in srgb, var(--line) 42%, transparent);
+  --card-border-hover: color-mix(in srgb, var(--line-strong) 55%, transparent);
   --card-shadow: none;
 
   --shadow-sm: 0 1px 2px rgba(32, 36, 29, 0.05),
@@ -69,6 +71,7 @@
   --paper: #111510;
   --surface: #171c16;
   --surface-sunken: #0d110c;
+  --surface-alt: #141812;
   --surface-raised: #1c221b;
 
   --ink: #ece9df;
@@ -89,8 +92,8 @@
   --focus: #8ea47a;
 
   --card-bg: color-mix(in srgb, var(--surface) 82%, transparent);
-  --card-border: color-mix(in srgb, var(--line-strong) 45%, transparent);
-  --card-border-hover: color-mix(in srgb, var(--line-strong) 70%, transparent);
+  --card-border: color-mix(in srgb, var(--line-strong) 35%, transparent);
+  --card-border-hover: color-mix(in srgb, var(--line-strong) 60%, transparent);
   --card-shadow: none;
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
@@ -228,6 +231,16 @@ button {
 }
 
 .section--flush {
+  border-top: 0;
+}
+
+/* The band replaces the rule, so the boundary is not stated twice. */
+.section--alt {
+  background: var(--surface-alt);
+  border-top: 0;
+}
+
+.section--alt + .section {
   border-top: 0;
 }
 
@@ -524,16 +537,17 @@ button {
   font-weight: 450;
   line-height: 1.22;
   letter-spacing: -0.018em;
-  max-width: 26ch;
+  line-height: 1.2;
+  max-width: 24ch;
   color: var(--ink-strong);
 }
 
 .hero__greeting {
-  color: var(--ink-faint);
+  color: var(--accent);
 }
 
 .hero__intro {
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
   max-width: 52ch;
   font-size: 1.02rem;
   color: var(--ink-muted);
@@ -548,7 +562,7 @@ button {
 }
 
 .hero__facts {
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   font-size: 0.88rem;
   color: var(--ink-faint);
 }
@@ -587,6 +601,7 @@ button {
 /* One treatment for both projects: same surface, same faint edge, same
    rhythm. The content carries the weight, not the container. */
 .work {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: clamp(1.45rem, 2.6vw, 1.9rem);
@@ -597,6 +612,17 @@ button {
   border-radius: 10px;
   box-shadow: var(--card-shadow);
   transition: border-color 0.2s ease;
+}
+
+/* A green rule along the top edge does the work the full outline used to,
+   which lets the rest of the border recede. */
+.work::before {
+  content: '';
+  position: absolute;
+  inset: -1px -1px auto -1px;
+  height: 2px;
+  border-radius: 10px 10px 0 0;
+  background: var(--accent-line);
 }
 
 .work:hover {
@@ -664,9 +690,9 @@ button {
 /* Personal projects sit under the same section, tied to it by a rule rather
    than floating below the cards. */
 .subsection__title {
-  margin-top: clamp(2rem, 3.5vw, 2.75rem);
-  padding-top: clamp(1.25rem, 2.5vw, 1.75rem);
-  border-top: 1px solid var(--line);
+  margin-top: clamp(2.5rem, 4vw, 3.25rem);
+  padding-top: clamp(1.5rem, 2.5vw, 1.9rem);
+  border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
   margin-bottom: 1.1rem;
   font-family: var(--font-serif);
   font-size: 1.1rem;
@@ -695,8 +721,9 @@ button {
 
 .side__summary {
   font-size: 0.92rem;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--ink-muted);
+  max-width: 46ch;
 }
 
 .side .tech {
@@ -892,6 +919,14 @@ button {
 
 /* The contact block runs into the footer, so the page does not end on two
    separate pockets of empty space. */
+#about.section {
+  padding-block: clamp(4rem, 7vw, 6.5rem);
+}
+
+#skills.section {
+  padding-block: clamp(2.75rem, 5vw, 4rem);
+}
+
 #contact.section {
   padding-bottom: clamp(2.25rem, 4vw, 3.25rem);
 }
@@ -970,6 +1005,23 @@ button {
   color: var(--accent);
 }
 
+/* Title, category and organisation read as one block, set off from the body
+   by a green rule rather than by a card. */
+/* One mark closes the header block: a short green rule, not a rule plus a
+   full-width border doing the same job twice. */
+.project__head {
+  padding-bottom: clamp(0.4rem, 1vw, 0.6rem);
+}
+
+.project__head::after {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  margin-top: clamp(1.3rem, 2.2vw, 1.6rem);
+  background: var(--accent-line);
+}
+
 .project__title {
   font-family: var(--font-serif);
   font-size: clamp(1.9rem, 4.5vw, 2.6rem);
@@ -979,19 +1031,23 @@ button {
 }
 
 .project__subtitle {
-  margin-top: 0.4rem;
+  margin-top: 0.35rem;
   font-size: 1.02rem;
   color: var(--ink-muted);
 }
 
 .project__org {
-  margin-top: 0.6rem;
+  margin-top: 0.3rem;
   font-size: 0.9rem;
   color: var(--ink-faint);
 }
 
 .project__section {
   margin-top: clamp(2.25rem, 4vw, 3rem);
+}
+
+.project__head + .project__section {
+  margin-top: clamp(2rem, 3.5vw, 2.5rem);
 }
 
 .project__section h2 {

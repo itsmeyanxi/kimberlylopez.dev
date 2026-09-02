@@ -48,15 +48,15 @@ export default function CaseStudy({ slug }) {
           My work
         </a>
 
-        <h1 className="project__title" data-reveal>
-          {project.name}
-        </h1>
-        <p className="project__subtitle" data-reveal>
-          {project.category}
-        </p>
-        <p className="project__org" data-reveal>
-          {project.org}{DOT}{project.team}
-        </p>
+        <header className="project__head" data-reveal>
+          <h1 className="project__title">{project.name}</h1>
+          <p className="project__subtitle">{project.category}</p>
+          <p className="project__org">
+            {project.org}
+            {DOT}
+            {project.team}
+          </p>
+        </header>
 
         <section className="project__section" data-reveal>
           <h2>What it is</h2>

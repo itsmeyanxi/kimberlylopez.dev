@@ -138,6 +138,7 @@ function Work() {
       id="work"
       title="Work"
       lead="Some of the internal systems I work on at Meatplus Trading Corp."
+      className="section--alt"
     >
       <div className="work-list">
         {professionalProjects.map((project) => (
