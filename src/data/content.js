@@ -9,9 +9,10 @@ export const profile = {
   greeting: 'Hi, I’m Kimberly.',
   headline:
     'I’m a software developer working mainly with PHP, Laravel, JavaScript, and MySQL.',
-  facts: [
-    'Backend Software Developer at Meatplus Trading Corp.',
-    'Quezon City, Philippines',
+  details: [
+    { label: 'Currently', value: 'Backend Software Developer' },
+    { label: 'Working with', value: 'Laravel / PHP / MySQL' },
+    { label: 'Based in', value: 'Quezon City, PH' },
   ],
   email: 'lopezkcc714@gmail.com',
   linkedin: 'https://www.linkedin.com/in/lopezkcc714',
@@ -48,11 +49,11 @@ export const projects = [
       'Internal production and warehouse system for tracking crates from weighing to dispatch.',
     areas: ['Weighing', 'Warehouse', 'Reporting', 'Access'],
     workflow: [
-      'Production weighing',
-      'QR-coded crate identification',
-      'Warehouse receiving',
+      'Weighing',
+      'QR crate',
+      'Receiving',
       'Storage / processing',
-      'Inventory & stock movement',
+      'Stock movement',
       'Dispatch',
     ],
     // Grouped by area. Entries with a title render as labelled blocks.

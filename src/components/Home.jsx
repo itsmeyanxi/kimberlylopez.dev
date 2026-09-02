@@ -39,26 +39,34 @@ function TechLine({ items }) {
 function Hero() {
   return (
     <section className="hero" id="top">
-      <div className="shell">
-        <h1 className="hero__headline" data-reveal>
-          <span className="hero__greeting">{profile.greeting}</span>{' '}
-          {profile.headline}
-        </h1>
+      <div className="shell hero__inner">
+        <div className="hero__main">
+          <h1 className="hero__headline" data-reveal>
+            <span className="hero__greeting">{profile.greeting}</span>{' '}
+            {profile.headline}
+          </h1>
 
-        <div className="hero__actions" data-reveal>
-          <a className="btn btn--primary" href="#work">
-            View My Work
-            <ArrowRight />
-          </a>
-          <ResumeLink className="btn btn--secondary">
-            <Download />
-            Download Resume
-          </ResumeLink>
+          <div className="hero__actions" data-reveal>
+            <a className="btn btn--primary" href="#work">
+              View My Work
+              <ArrowRight />
+            </a>
+            <ResumeLink className="btn btn--secondary">
+              <Download />
+              Download Resume
+            </ResumeLink>
+          </div>
         </div>
 
-        <p className="hero__facts" data-reveal>
-          {dotted(profile.facts)}
-        </p>
+        {/* Editorial detail, not a card: no border, background or icons. */}
+        <dl className="hero__details" data-reveal>
+          {profile.details.map((d) => (
+            <div key={d.label}>
+              <dt>{d.label}</dt>
+              <dd>{d.value}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );
@@ -179,32 +187,37 @@ function Experience() {
             </div>
           </article>
         ))}
+      </div>
 
+      {/* Related, but deliberately off the timeline so they do not read as
+          two more positions. */}
+      <div className="record">
         {education.items.map((item) => (
-          <article className="role" key={item.school} data-reveal>
-            <p className="role__dates">{item.dates}</p>
+          <article className="record__item" key={item.school} data-reveal>
+            <p className="record__dates">{item.dates}</p>
             <div>
-              <h3 className="role__company">{item.school}</h3>
-              <p className="role__title">{item.credential}</p>
-              <p className="role__location">{item.location}</p>
+              <h3 className="record__name">{item.school}</h3>
+              <p className="record__meta">
+                {item.credential}
+                {DOT}
+                {item.location}
+              </p>
             </div>
           </article>
         ))}
 
-        <article className="role" data-reveal>
-          <p className="role__dates">{certifications.dates}</p>
+        <article className="record__item" data-reveal>
+          <p className="record__dates">{certifications.dates}</p>
           <div>
-            <h3 className="role__company">{certifications.heading}</h3>
-            <ul className="certs">
-              {certifications.items.map((c) => (
-                <li key={c.name}>
-                  {c.name}
-                  <span className="certs__meta">
-                    {c.issuer ? `${DOT}${c.issuer}${DOT}${c.date}` : `${DOT}${c.date}`}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <h3 className="record__name">{certifications.heading}</h3>
+            {certifications.items.map((c) => (
+              <p className="record__meta" key={c.name}>
+                {c.name}
+                {c.issuer ? `${DOT}${c.issuer}` : ''}
+                {DOT}
+                {c.date}
+              </p>
+            ))}
           </div>
         </article>
       </div>
@@ -232,8 +245,9 @@ function Skills() {
   return (
     <Section id="skills" title="Skills">
       <dl className="skills" data-reveal>
-        {skills.map((group) => (
+        {skills.map((group, i) => (
           <div key={group.group}>
+            <p className="skills__num">{String(i + 1).padStart(2, '0')}</p>
             <dt>{group.note ?? group.group}</dt>
             <dd className="tech">{dotted(group.items)}</dd>
           </div>

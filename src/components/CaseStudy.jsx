@@ -66,10 +66,13 @@ export default function CaseStudy({ slug }) {
         {project.workflow && (
           <section className="project__section" data-reveal>
             <h2>How it works</h2>
-            {/* A wrapped sequence, with the arrows as separators. No boxes. */}
-            <ol className="flow">
-              {project.workflow.map((step) => (
-                <li key={step}>{step}</li>
+            {/* A numbered rail. Text only, wraps on narrow screens. */}
+            <ol className="rail">
+              {project.workflow.map((step, i) => (
+                <li key={step}>
+                  <span className="rail__num">{String(i + 1).padStart(2, '0')}</span>
+                  {step}
+                </li>
               ))}
             </ol>
           </section>
